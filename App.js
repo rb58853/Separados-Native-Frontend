@@ -1,17 +1,29 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import Test from './src/components/test/Test';
 import Constants from 'expo-constants';
+import User from './src/components/user/user-perfil/user';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Test />
+    <View style={styles.app}>
+      <View style={styles.container}>
+        <User userKey={'user1'} />
+      </View >
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  app: {
     marginTop: Constants.statusBarHeight,
+    backgroundColor: 'rgba(15,15,15,1)',
+    color: 'white',
+    minHeight: 1000,
+  },
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
