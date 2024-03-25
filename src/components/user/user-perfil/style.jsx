@@ -1,15 +1,62 @@
 import { StyleSheet } from 'react-native';
 
+export const imagesStyle = StyleSheet.create({
+    container: {
+        position:'relative',
+        backgroundColor: 'green',
+        overflow: 'scroll',
+        borderRadius: 10,
+    },
+    carrusel: {
+        width: '100%',
+        aspectRatio: 2 / 3,
+    },
+    image: {
+        height: "100%",
+        aspectRatio: 2 / 3,
+    },
+
+    slidesSpace: {
+        display: 'flex',
+        flexDirection: 'row',
+        gap:5,
+        width:'96%',
+        alignSelf:'center',
+        // position: 'absolute',
+        top:1,
+        position:'absolute',
+        zIndex:1,
+    },
+
+    slide: {
+        height: 5,
+        flexGrow:1,
+        backgroundColor: 'rgba(0,0,0,0.3)',
+        borderRadius:50,
+    },
+
+    activeSlide: {
+        height: 5,
+        flexGrow:1,
+        backgroundColor: 'rgba(255,255,255,0.5)',
+        borderRadius:50,
+    }
+
+})
+
 export const styles = StyleSheet.create({
     text: {
         color: 'white',
     },
     user: {
         display: 'flex',
-        // flex:1,
+        flex: 1,
         flexDirection: 'column',
         placeContent: 'center',
         width: '95%',
+    },
+    scrollView: {
+        flex: 1
     },
 
     myHeader1: {

@@ -3,87 +3,83 @@ import users from '../../../data/users';
 import perfil from '../../../data/perfil';
 import { SwitchImage } from '../utils/utils';
 import { AgeCaculate } from '../utils/utils';
-import { View, ScrollView, Text, Touchable, Image, TouchableOpacity } from 'react-native';
-import { styles } from './style';
-import { requireNativeModule } from 'expo';
+import { View, ScrollView, Text, Touchable, Image, TouchableOpacity, FlatList } from 'react-native';
+import { imagesStyle, styles } from './style';
+import { usersImagesRoot } from '../../../environment/environment.js'
+
+function Slides({ images, indexImage, isHide }) {
+    const slides = images.map((images, index) => {
+        if (index == indexImage)
+            return <View style={imagesStyle.activeSlide} />
+        else
+            return <View style={imagesStyle.slide} />
+    })
+    return (
+        <View style={imagesStyle.slidesSpace}>
+            {slides}
+        </View>
+    )
+}
 
 
-// function Slides({ images, indexImage, isHide }) {
-//     const slides = images.map((images, index) => {
-//         if (index == indexImage)
-//             return <View className={`slide active`} />
-//         else
-//             return <View className={`slide`} />
-//     })
-//     return (
-//         <View className={`slides ${isHide ? 'hide' : ''}`}>
-//             {slides}
-//         </View>
-//     )
-// }
+function Images({ user }) {
+    const images = user.images.map((path, index) => {
+        return { id: index, uri: usersImagesRoot + path }
+    })
 
-// function Images({ user }) {
-//     const [isHide, setIsHide] = useState(true)
-//     const [hideTimer, setHideTimer] = useState(null)
+    const renderItem = ({ item }) => (
+        <Image
+            source={{ uri: 'http://192.168.200.251:8080/users/user1/images/1.png' }}
+            style={imagesStyle.image}
+        />
+    );
 
-//     const images = user.images.map((path, index) => {
-//         return <img src={path} alt="" key={index} />
-//     }
-//     )
-//     const [indexImage, setIndexImage] = useState(0)
-//     const [deltaX, setDeltaX] = useState(0)
+    const [isHide, setIsHide] = useState(false)
+    // const [hideTimer, setHideTimer] = useState(null)
 
-//     const ref = useRef()
+    const [indexImage, setIndexImage] = useState(0)
+    const [deltaX, setDeltaX] = useState(0)
 
-//     useEffect(() => {
-//         const component = ref.current.querySelectorAll('img')[indexImage];
+    const ref = useRef()
 
-//         if (component) {
-//             const container = component.parentNode;
-//             const componentRect = component.getBoundingClientRect();
-//             const offsetLeft = (componentRect.width + 10) * indexImage;
-//             container.scrollTo({
-//                 left: offsetLeft,
-//                 behavior: 'smooth'
-//             });
-//         }
-//     }, [indexImage])
+    // useEffect(() => {
+    //     const component = ref.current.querySelectorAll('img')[indexImage];
 
-//     return (
+    //     if (component) {
+    //         const container = component.parentNode;
+    //         const componentRect = component.getBoundingClientRect();
+    //         const offsetLeft = (componentRect.width + 10) * indexImage;
+    //         container.scrollTo({
+    //             left: offsetLeft,
+    //             behavior: 'smooth'
+    //         });
+    //     }
+    // }, [indexImage])
 
-//         <View className="photo-name">
-//             <Slides indexImage={indexImage} images={images} isHide={isHide} />
-//             <View className='carrusel'
-//                 ref={ref}
-//                 onTouchStart={(e) => setDeltaX(e.currentTarget.scrollLeft)}
-//                 onTouchEnd={(e) => {
-//                     SwitchImage(e.currentTarget.scrollLeft, deltaX, setIndexImage, indexImage, images.length)
-//                 }}
-//                 onScroll={(e) => {
-//                     setIsHide(false)
-//                     if (hideTimer) {
-//                         clearTimeout(hideTimer);
-//                     }
-//                     setHideTimer(setTimeout(() => { setIsHide(true) }, 1000));
-//                 }
-//                 }
-//             >
-//                 {images}
-//             </View>
-//             {/* <View className='vinnete'/> */}
-//         </View>
-//     )
-// }
+    return (
+        <View style={imagesStyle.container}>
+            <Slides indexImage={indexImage} images={images} isHide={isHide} />
+            {/* <Text>{deltaX +' --- ' + indexImage}</Text> */}
+            <FlatList
+                ref={ref}
+                data={images}
+                horizontal={true}
+                keyExtractor={item => item.id}
+                renderItem={renderItem}
+                style={imagesStyle.carrusel}
+                contentContainerStyle={{ gap: 10 }}
 
+                onScrollBeginDrag={(e) => { setDeltaX(e.nativeEvent.contentOffset.x) }}
+                onScrollEndDrag={(e) => {
+                    SwitchImage(e.nativeEvent.contentOffset.x, deltaX, setIndexImage, indexImage, images.length)
+                }}
 
-// function Buttons() {
-//     return (
-//         <Text  style ={styles.text}>
-//             seasrassad sadjasddddddddddd
-//         </Text>
-//         )
-// }
-// const button = ({ onPress, image }) => (
+            />
+
+        </View>
+    )
+}
+
 function Button({ image }) {
     return (
         <TouchableOpacity
@@ -148,35 +144,42 @@ function Tags({ user }) {
     )
 }
 
+function Info({ user }) {
+    return (<View>
+
+        <View style={styles.boxSpace}>
+            <Text style={styles.myHeader2}>Informacion</Text>
+            <Text style={styles.text}>{`${user.genre == 'male' ? "♂️" : '♀️'} ${user.name} ${user.last_name}`}</Text>
+            <Text style={styles.text}>{`🏠 ${user.city}, ${user.municipe}`}</Text>
+            <Text style={styles.text}>{`💜 ${user.sexual_orientation}`}</Text>
+            <Text style={styles.text}>{`🏢 Unversidad de la Habana`}</Text>
+            <Text style={styles.text}>{`👨‍🎓 Ingeniera de sofware`}</Text>
+        </View>
+
+        <View style={styles.boxSpace}>
+            <Text style={styles.myHeader2}>Intereses</Text>
+            <Tags user={user} />
+        </View>
+        <View style={styles.boxSpace}>
+            <Text style={styles.myHeader2}>Sobre mi</Text>
+            <Text style={styles.text}>
+                {user.bibliografy}
+            </Text>
+        </View >
+    </View>
+    )
+
+}
 function User({ userKey }) {
     const user = users[userKey];
 
     return (
         <View style={styles.user}>
-            <ScrollView>
+            <ScrollView style={styles.scrollView}>
                 <Text style={styles.myHeader1}>{`${user.name}, ${AgeCaculate(user)}`}</Text>
-                {/* <Images user={user} /> */}
-                {/* <View> */}
-                <View style={styles.boxSpace}>
-                    <Text style={styles.myHeader2}>Informacion</Text>
-                    <Text style={styles.text}>{`${user.genre == 'male' ? "♂️" : '♀️'} ${user.name} ${user.last_name}`}</Text>
-                    <Text style={styles.text}>{`🏠 ${user.city}, ${user.municipe}`}</Text>
-                    <Text style={styles.text}>{`💜 ${user.sexual_orientation}`}</Text>
-                    <Text style={styles.text}>{`🏢 Unversidad de la Habana`}</Text>
-                    <Text style={styles.text}>{`👨‍🎓 Ingeniera de sofware`}</Text>
-                </View>
-
-                <View style={styles.boxSpace}>
-                    <Text style={styles.myHeader2}>Intereses</Text>
-                    <Tags user={user} />
-                </View>
-                <View style={styles.boxSpace}>
-                    <Text style={styles.myHeader2}>Sobre mi</Text>
-                    <Text style={styles.text}>
-                        {user.bibliografy}
-                    </Text>
-                </View >
-                <View style = {styles.spaceToButtons}/>
+                <Images user={user} />
+                <Info user={user} />
+                <View style={styles.spaceToButtons} />
             </ScrollView>
             <Buttons />
         </View >

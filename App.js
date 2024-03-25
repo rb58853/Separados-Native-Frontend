@@ -18,12 +18,13 @@ const styles = StyleSheet.create({
     marginTop: Constants.statusBarHeight,
     backgroundColor: 'rgba(15,15,15,1)',
     color: 'white',
-    minHeight: 1000,
+    flex:1,
   },
   container: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    flex:1,
   },
 });
