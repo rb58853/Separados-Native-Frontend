@@ -28,6 +28,19 @@ export const imagesStyle = StyleSheet.create({
         zIndex:1,
     },
 
+    slidesSpaceHide: {
+        display: 'flex',
+        flexDirection: 'row',
+        gap:5,
+        width:'96%',
+        alignSelf:'center',
+        // position: 'absolute',
+        top:1,
+        position:'absolute',
+        zIndex:1,
+        opacity: 0,
+    },
+
     slide: {
         height: 5,
         flexGrow:1,

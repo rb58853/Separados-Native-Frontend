@@ -3,9 +3,10 @@ import users from '../../../data/users';
 import perfil from '../../../data/perfil';
 import { SwitchImage } from '../utils/utils';
 import { AgeCaculate } from '../utils/utils';
-import { View, ScrollView, Text, Touchable, Image, TouchableOpacity, FlatList } from 'react-native';
+import { View, ScrollView, Text, Touchable, Image, TouchableOpacity, FlatList, Animated } from 'react-native';
 import { imagesStyle, styles } from './style';
 import { usersImagesRoot } from '../../../environment/environment.js'
+import FadePanel from '../utils/fadePanel.jsx';
 
 function Slides({ images, indexImage, isHide }) {
     const slides = images.map((images, index) => {
@@ -15,9 +16,9 @@ function Slides({ images, indexImage, isHide }) {
             return <View style={imagesStyle.slide} />
     })
     return (
-        <View style={imagesStyle.slidesSpace}>
+        <FadePanel style={imagesStyle.slidesSpace} visible={!isHide}>
             {slides}
-        </View>
+        </FadePanel>
     )
 }
 
@@ -34,8 +35,8 @@ function Images({ user }) {
         />
     );
 
-    const [isHide, setIsHide] = useState(false)
-    // const [hideTimer, setHideTimer] = useState(null)
+    const [isHide, setIsHide] = useState(true)
+    const [hideTimer, setHideTimer] = useState(null)
 
     const [indexImage, setIndexImage] = useState(0)
     const [deltaX, setDeltaX] = useState(0)
@@ -59,7 +60,7 @@ function Images({ user }) {
     return (
         <View style={imagesStyle.container}>
             <Slides indexImage={indexImage} images={images} isHide={isHide} />
-            {/* <Text>{deltaX +' --- ' + indexImage}</Text> */}
+            {/* <Text style={styles.text}>{`${isHide ? 'True' : 'False'}`}</Text> */}
             <FlatList
                 ref={ref}
                 data={images}
@@ -72,6 +73,13 @@ function Images({ user }) {
                 onScrollBeginDrag={(e) => { setDeltaX(e.nativeEvent.contentOffset.x) }}
                 onScrollEndDrag={(e) => {
                     SwitchImage(e.nativeEvent.contentOffset.x, deltaX, setIndexImage, indexImage, images.length)
+                }}
+                onScroll={(e) => {
+                    setIsHide(false)
+                    if (hideTimer) {
+                        clearTimeout(hideTimer);
+                    }
+                    setHideTimer(setTimeout(() => { setIsHide(true) }, 1000));
                 }}
 
             />
