@@ -1,48 +1,5 @@
 const users =
 {
-    "olivia": {
-        nick: 'olivia',
-        name: "Olivia",
-        last_name: "Perez",
-        email: "user@email.com",
-        perfil_photo: 'light/perfil.png',
-        bibliografy: '🎬 Amante de las películas de ciencia ficción, especialmente "Guardianes de la Galaxia". 🎸 Me encanta la música rock y siempre llevo mi guitarra. 🍽️ Cocinero en mi tiempo libre, especialmente me gusta hacer lasaña. 🐶 Amante de los animales, especialmente de los perros. 🚀 Viajero en busca de nuevas aventuras. ¿Te unes a mí en esta búsqueda?',
-        images: [
-            'olivia/1.png',
-            'olivia/2.png',
-            'olivia/3.png',
-        ],
-        height: "170",
-        weight: "58",
-        date_born: "20/3/1999",
-        tags: ['pintura', 'photografia', 'musica', 'indie', 'playa', 'animales', 'gatos', 'correr', 'programacion', 'literatura', 'mosquitos', 'perros'],
-        city: 'Habana',
-        municipe: 'Vedado',
-        genre: 'female',
-        sexual_orientation:'heterosexual',
-    },
-    "anna": {
-        nick: 'anna',
-        name: "Anna",
-        last_name: "Johns",
-        email: "user@email.com",
-        perfil_photo: 'light/perfil.png',
-        bibliografy: '🎬 Amante de las películas de ciencia ficción, especialmente "Guardianes de la Galaxia". 🎸 Me encanta la música rock y siempre llevo mi guitarra. 🍽️ Cocinero en mi tiempo libre, especialmente me gusta hacer lasaña. 🐶 Amante de los animales, especialmente de los perros. 🚀 Viajero en busca de nuevas aventuras. ¿Te unes a mí en esta búsqueda?',
-        images: [
-            'anna/1.jpg',
-            'anna/2.jpg',
-            'anna/3.jpg',
-            'anna/4.jpg',
-        ],
-        height: "170",
-        weight: "58",
-        date_born: "20/3/1999",
-        tags: ['pintura', 'photografia', 'musica', 'indie', 'playa', 'animales', 'gatos', 'correr', 'programacion', 'literatura', 'mosquitos', 'perros'],
-        city: 'Habana',
-        municipe: 'Vedado',
-        genre: 'female',
-        sexual_orientation:'heterosexual',
-    },
     "clara": {
         nick: 'clara',
         name: "Clara",
@@ -72,7 +29,29 @@ const users =
         city: 'Habana',
         municipe: 'Vedado',
         genre: 'female',
-        sexual_orientation:'heterosexual',
+        sexual_orientation: 'heterosexual',
+    },
+    "anna": {
+        nick: 'anna',
+        name: "Anna",
+        last_name: "Johns",
+        email: "user@email.com",
+        perfil_photo: 'light/perfil.png',
+        bibliografy: '🎬 Amante de las películas de ciencia ficción, especialmente "Guardianes de la Galaxia". 🎸 Me encanta la música rock y siempre llevo mi guitarra. 🍽️ Cocinero en mi tiempo libre, especialmente me gusta hacer lasaña. 🐶 Amante de los animales, especialmente de los perros. 🚀 Viajero en busca de nuevas aventuras. ¿Te unes a mí en esta búsqueda?',
+        images: [
+            'anna/1.jpg',
+            'anna/2.jpg',
+            'anna/3.jpg',
+            'anna/4.jpg',
+        ],
+        height: "170",
+        weight: "58",
+        date_born: "20/3/1995",
+        tags: ['pintura', 'photografia', 'musica', 'indie', 'playa', 'animales', 'gatos', 'correr', 'programacion', 'literatura', 'mosquitos', 'perros'],
+        city: 'Habana',
+        municipe: 'Vedado',
+        genre: 'female',
+        sexual_orientation: 'heterosexual',
     },
     "sofia": {
         nick: 'sofia',
@@ -96,7 +75,7 @@ const users =
         city: 'Habana',
         municipe: 'Vedado',
         genre: 'female',
-        sexual_orientation:'heterosexual',
+        sexual_orientation: 'heterosexual',
     },
 
 
@@ -121,7 +100,7 @@ const users =
         city: 'Habana',
         municipe: 'Vedado',
         genre: 'male',
-        sexual_orientation:'heterosexual',
+        sexual_orientation: 'heterosexual',
     },
 
     "mia": {
@@ -132,7 +111,7 @@ const users =
         perfil_photo: 'light/perfil.png',
         bibliografy: '🎬 Amante de las películas de ciencia ficción, especialmente "Guardianes de la Galaxia". 🎸 Me encanta la música rock y siempre llevo mi guitarra. 🍽️ Cocinero en mi tiempo libre, especialmente me gusta hacer lasaña. 🐶 Amante de los animales, especialmente de los perros. 🚀 Viajero en busca de nuevas aventuras. ¿Te unes a mí en esta búsqueda?',
         images: [
-            'mia/1.png',
+            'mia/1.jpg',
         ],
         height: "177",
         weight: "70",
@@ -141,26 +120,49 @@ const users =
         city: 'Habana',
         municipe: 'Vedado',
         genre: 'female',
-        sexual_orientation:'heterosexual',
+        sexual_orientation: 'heterosexual',
     },
 
     "my_user": {
-        nick: 'my-user',
+        nick: 'my_user',
         name: "Ismael",
         last_name: "Garcia",
         email: "user@email.com",
         perfil_photo: 'light/perfil.png',
         bibliografy: '🎬 Amante de las películas de ciencia ficción, especialmente "Guardianes de la Galaxia". 🎸 Me encanta la música rock y siempre llevo mi guitarra. 🍽️ Cocinero en mi tiempo libre, especialmente me gusta hacer lasaña. 🐶 Amante de los animales, especialmente de los perros. 🚀 Viajero en busca de nuevas aventuras. ¿Te unes a mí en esta búsqueda?',
         images: [
-            'user1/1.png',
-            'user1/2.png',
-            'user1/3.png',
+            'mia/1.jpg',
+            // 'user1/2.png',
+            // 'user1/3.png',
         ],
         height: "180",
         weight: "70",
         date_born: "22/3/1996",
         tags: ['animales', 'gatos', 'programacion', 'literatura', 'mosquitos', 'perros']
     },
+
+    "olivia": {
+        nick: 'olivia',
+        name: "Olivia",
+        last_name: "Perez",
+        email: "user@email.com",
+        perfil_photo: 'light/perfil.png',
+        bibliografy: '🎬 Amante de las películas de ciencia ficción, especialmente "Guardianes de la Galaxia". 🎸 Me encanta la música rock y siempre llevo mi guitarra. 🍽️ Cocinero en mi tiempo libre, especialmente me gusta hacer lasaña. 🐶 Amante de los animales, especialmente de los perros. 🚀 Viajero en busca de nuevas aventuras. ¿Te unes a mí en esta búsqueda?',
+        images: [
+            'olivia/1.png',
+            'olivia/2.png',
+            'olivia/3.png',
+        ],
+        height: "170",
+        weight: "58",
+        date_born: "20/3/1999",
+        tags: ['pintura', 'photografia', 'musica', 'indie', 'playa', 'animales', 'gatos', 'correr', 'programacion', 'literatura', 'mosquitos', 'perros'],
+        city: 'Habana',
+        municipe: 'Vedado',
+        genre: 'female',
+        sexual_orientation: 'heterosexual',
+    },
+
 
 };
 

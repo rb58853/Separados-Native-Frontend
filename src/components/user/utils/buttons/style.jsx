@@ -12,10 +12,19 @@ export const perfilStyles = StyleSheet.create({
         alignSelf: 'center',
     },
 
+    buttonsFast: {
+        marginTop:10,
+        bottom: 0,
+        height: 60,
+        display: 'flex',
+        flexDirection: 'row',
+        gap: 10,
+        alignSelf: 'center',
+    },
+
     button: {
         height: '100%',
         aspectRatio: 1 / 1,
-        backgroundColor: 'white',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',

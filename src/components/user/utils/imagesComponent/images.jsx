@@ -1,26 +1,66 @@
 import { useEffect, useRef, useState } from 'react';
-import { SwitchImage } from '../utils.jsx';
-import { View, Image, FlatList } from 'react-native';
-import { imagesStyle } from './style.jsx';
-import { usersImagesRoot} from '../../../../environment/environment.js'
+import { AgeCaculate, SwitchImage } from '../utils.jsx';
+import { View, Image, FlatList, Text, TouchableOpacity } from 'react-native';
+import styles, { infoButtonStyle } from './style.jsx';
+import { usersImagesRoot } from '../../../../environment/environment.js'
 import FadePanel from '../../../utils/fadePanel.jsx'
+import { LinearGradient } from 'expo-linear-gradient';
+import Buttons from '../buttons/buttons.jsx';
+
+function InfoButton() {
+    return (
+        <TouchableOpacity
+            // onPress={() => { }}
+            // onPress={onPress}
+            style={infoButtonStyle.button}
+        >
+            <Image
+                style={infoButtonStyle.buttonImage}
+                source={require('./icons/infoDark.png')}
+            />
+        </TouchableOpacity>
+    )
+};
 
 function Slides({ images, indexImage, isHide }) {
     const slides = images.map((images, index) => {
         if (index == indexImage)
-            return <View style={imagesStyle.activeSlide} />
+            return <View style={styles().activeSlide} />
         else
-            return <View style={imagesStyle.slide} />
+            return <View style={styles().slide} />
     })
     return (
-        <FadePanel style={imagesStyle.slidesSpace} visible={!isHide}>
+        <FadePanel style={styles().slidesSpace} visible={!isHide}>
             {slides}
         </FadePanel>
     )
 }
+function Info({ user }) {
+    return (
+        <LinearGradient
+            colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.2)', 'rgba(0,0,0,0.4)', 'rgba(0,0,0,0.6)','rgba(0,0,0,0.8)', 'rgba(15,15,20,1)']}
+            style={styles().absoluteInfoSpace}
+        >
+            <View style={{ height: 100 }} />
+            <View style={styles().infoSpace}>
+                
+                <View style={styles().shortInfo}>
+                    <Text style={[styles().text, {fontSize:22, fontWeight:'500'}]}>
+                        {`${user.name} ${user.last_name}, ${AgeCaculate(user)} ${user.genre == 'male' ? "M" : 'F'}`}
+                    </Text>
+                    <Text style={styles().text}>{`${user.height} cm, ${user.weight} kg`}</Text>
+                    <Text style={styles().text}>{`${user.sexual_orientation}`}</Text>
+                </View>
 
+                <InfoButton/>
+            </View>
 
-function Images({ user }) {
+            <Buttons fast={true} />
+        </LinearGradient>
+    )
+}
+
+function Images({ user, mode = 'default' }) {
     const images = user.images.map((path, index) => {
         return { id: index, uri: usersImagesRoot + path }
     })
@@ -28,7 +68,7 @@ function Images({ user }) {
     const renderItem = ({ item }) => (
         <Image
             source={{ uri: item.uri }}
-            style={imagesStyle.image}
+            style={styles().image}
         />
     );
 
@@ -47,7 +87,7 @@ function Images({ user }) {
     }, [indexImage]);
 
     return (
-        <View style={imagesStyle.container}>
+        <View style={styles(fast = mode == 'fast').container}>
             <Slides indexImage={indexImage} images={images} isHide={isHide} />
             <FlatList
                 ref={ref}
@@ -55,7 +95,7 @@ function Images({ user }) {
                 horizontal={true}
                 keyExtractor={item => item.id}
                 renderItem={renderItem}
-                style={imagesStyle.carrusel}
+                style={styles().carrusel}
                 showsHorizontalScrollIndicator={false}
 
                 onScrollBeginDrag={(e) => { setDeltaX(e.nativeEvent.contentOffset.x) }}
@@ -69,9 +109,8 @@ function Images({ user }) {
                     }
                     setHideTimer(setTimeout(() => { setIsHide(true) }, 1000));
                 }}
-
             />
-
+            {mode == 'fast' && <Info user={user} />}
         </View>
     )
 }

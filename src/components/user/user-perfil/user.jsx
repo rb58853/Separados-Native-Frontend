@@ -11,7 +11,7 @@ function ExitButton() {
     return (
         <TouchableOpacity
             // onPress={() => { }}
-            style={styles.exitButton}
+            style={[styles.exitButton, styles.boxShadow]}
         >
             <Image
                 style={styles.exitButtonImage}
@@ -93,7 +93,7 @@ function User({ userKey }) {
                 <Info user={user} />
                 <View style={styles.spaceToButtons} />
             </ScrollView>
-            <Buttons />
+            <Buttons fast = {false} />
         </View >
     )
 }

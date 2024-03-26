@@ -16,7 +16,7 @@ function Button({ image }) {
     )
 };
 
-function Buttons() {
+function Buttons({fast = false}) {
     const star = require('./icons/star.png');
     const heart = require('./icons/heart.png');
     const block = require('./icons/block.png');
@@ -25,7 +25,7 @@ function Buttons() {
     // const [active, setActive] = useState(0)
 
     return (
-        <View style={perfilStyles.buttons}>
+        <View style={perfilStyles[`buttons${fast?'Fast':''}`]}>
             <Button image={notification} />
             <Button image={block} />
             <Button image={heart} />
