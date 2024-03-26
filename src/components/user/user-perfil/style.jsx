@@ -42,14 +42,14 @@ export const imagesStyle = StyleSheet.create({
     },
 
     slide: {
-        height: 5,
+        height: 3,
         flexGrow:1,
         backgroundColor: 'rgba(0,0,0,0.3)',
         borderRadius:50,
     },
 
     activeSlide: {
-        height: 5,
+        height: 3,
         flexGrow:1,
         backgroundColor: 'rgba(255,255,255,0.5)',
         borderRadius:50,
@@ -88,33 +88,6 @@ export const styles = StyleSheet.create({
         fontWeight: '600',
     },
 
-    buttons: {
-        position: 'absolute',
-        bottom: 30,
-        height: 50,
-        display: 'flex',
-        flexDirection: 'row',
-        gap: 15,
-        // backgroundColor: 'rgba(255,255,255,0.3)',
-        alignSelf: 'center',
-    },
-
-    button: {
-        height: '100%',
-        aspectRatio: 1 / 1,
-        backgroundColor: 'white',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'rgba(50,50,50,1)',
-        borderRadius: 20,
-
-    },
-    buttonImage: {
-        height: '60%',
-        width: '60%',
-        // backgroundColor:'white',
-    },
     spaceToButtons: {
         // backgroundColor: 'white',
         height: 100,

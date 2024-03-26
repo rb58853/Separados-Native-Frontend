@@ -6,7 +6,8 @@ import { AgeCaculate } from '../utils/utils';
 import { View, ScrollView, Text, Touchable, Image, TouchableOpacity, FlatList, Animated } from 'react-native';
 import { imagesStyle, styles } from './style';
 import { usersImagesRoot } from '../../../environment/environment.js'
-import FadePanel from '../utils/fadePanel.jsx';
+import FadePanel from '../../utils/fadePanel.jsx';
+import Buttons from '../utils/buttons/buttons.jsx';
 
 function Slides({ images, indexImage, isHide }) {
     const slides = images.map((images, index) => {
@@ -30,7 +31,7 @@ function Images({ user }) {
 
     const renderItem = ({ item }) => (
         <Image
-            source={{ uri: 'http://192.168.200.251:8080/users/user1/images/1.png' }}
+            source={{ uri: item.uri }}
             style={imagesStyle.image}
         />
     );
@@ -43,19 +44,11 @@ function Images({ user }) {
 
     const ref = useRef()
 
-    // useEffect(() => {
-    //     const component = ref.current.querySelectorAll('img')[indexImage];
-
-    //     if (component) {
-    //         const container = component.parentNode;
-    //         const componentRect = component.getBoundingClientRect();
-    //         const offsetLeft = (componentRect.width + 10) * indexImage;
-    //         container.scrollTo({
-    //             left: offsetLeft,
-    //             behavior: 'smooth'
-    //         });
-    //     }
-    // }, [indexImage])
+    useEffect(() => {
+        if (ref.current) {
+            ref.current.scrollToIndex({ index: indexImage, animated: true });
+        }
+    }, [indexImage]);
 
     return (
         <View style={imagesStyle.container}>
@@ -68,7 +61,8 @@ function Images({ user }) {
                 keyExtractor={item => item.id}
                 renderItem={renderItem}
                 style={imagesStyle.carrusel}
-                contentContainerStyle={{ gap: 10 }}
+                // contentContainerStyle={{ gap: 10 }}
+                showsHorizontalScrollIndicator={false}
 
                 onScrollBeginDrag={(e) => { setDeltaX(e.nativeEvent.contentOffset.x) }}
                 onScrollEndDrag={(e) => {
@@ -86,40 +80,6 @@ function Images({ user }) {
 
         </View>
     )
-}
-
-function Button({ image }) {
-    return (
-        <TouchableOpacity
-            // onPress={() => { }}
-            // onPress={onPress}
-            style={styles.button}
-        >
-            <Image
-                style={styles.buttonImage}
-                source={image}
-            />
-        </TouchableOpacity>
-    )
-};
-
-function Buttons() {
-    const star = require('../utils/buttons/icons/star.png');
-    const heart = require('../utils/buttons/icons/heart.png');
-    const block = require('../utils/buttons/icons/block.png');
-    const message = require('../utils/buttons/icons/message.png');
-    const notification = require('../utils/buttons/icons/notification.png');
-    // const [active, setActive] = useState(0)
-
-    return (
-        <View style={styles.buttons}>
-            <Button image={notification} />
-            <Button image={block} />
-            <Button image={heart} />
-            <Button image={message} />
-            <Button image={star} />
-        </View>
-    );
 }
 
 function Tags({ user }) {
