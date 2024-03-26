@@ -3,8 +3,9 @@ import Test from './src/components/test/Test';
 import Constants from 'expo-constants';
 import User from './src/components/user/user-perfil/user';
 import UserFast from './src/components/user/userFast/userFast.jsx';
-import TopBar from './src/components/user/bars/topBar/topBar.jsx';
+import TopBar from './src/components/bars/topBar/topBar.jsx';
 import DefaulHome from './src/components/home/default/home.jsx';
+import BottomBar from './src/components/bars/bottomBar/bottomBar.jsx';
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
           {/* <UserFast userKey={'clara'} /> */}
           <DefaulHome/>
         </View >
+        <BottomBar />
       </View>
     </View>
   );
