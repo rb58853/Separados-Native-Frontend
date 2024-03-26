@@ -3,9 +3,10 @@ import { StyleSheet } from 'react-native';
 export const imagesStyle = StyleSheet.create({
     container: {
         position:'relative',
-        backgroundColor: 'green',
         overflow: 'scroll',
-        borderRadius: 10,
+        borderRadius: 2,
+        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: 10,
     },
     carrusel: {
         width: '100%',
@@ -20,9 +21,8 @@ export const imagesStyle = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         gap:5,
-        width:'96%',
+        width:'99%',
         alignSelf:'center',
-        // position: 'absolute',
         top:1,
         position:'absolute',
         zIndex:1,
