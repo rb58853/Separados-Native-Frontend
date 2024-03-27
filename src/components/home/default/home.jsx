@@ -4,7 +4,7 @@ import UserFast from "../../user/userFast/userFast";
 import { useRef, useState } from "react";
 import perfil from "../../../data/perfil";
 
-function DefaulHome() {
+function DefaulHome({ navigation }) {
     const usersView = []
     Object.values(users).forEach((user_, index) => {
         if (user_.nick != 'my_user')
@@ -12,7 +12,7 @@ function DefaulHome() {
     })
 
     const renderItem = ({ item }) => (
-        <UserFast userKey={item.user} />
+        <UserFast navigation={navigation} userKey={item.user} />
     );
 
     const [indexUser, setIndexUser] = useState(0)
@@ -31,7 +31,7 @@ function DefaulHome() {
             horizontal={false}
             keyExtractor={item => item.id}
             renderItem={renderItem}
-            style={{}}
+            style={{backgroundColor:'rgba(15,15,20,1)'}}
             contentContainerStyle={{ gap: 30 }}
         // showsHorizontalScrollIndicator={false}
         />

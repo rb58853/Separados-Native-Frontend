@@ -7,21 +7,42 @@ import TopBar from './src/components/bars/topBar/topBar.jsx';
 import DefaulHome from './src/components/home/default/home.jsx';
 import BottomBar from './src/components/bars/bottomBar/bottomBar.jsx';
 
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
+
 export default function App() {
   return (
     <View style={styles.full}>
       <View style={styles.app}>
-        <TopBar />
-        <View style={styles.container}>
-          {/* <UserFast userKey={'clara'} /> */}
-          <DefaulHome/>
-        </View >
+        {/* <TopBar /> */}
+        {/* <View style={styles.container}> */}
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="home">
+            <Stack.Screen
+              name="home"
+              component={DefaulHome}
+              options={{ header: (props) => <TopBar {...props} /> }}
+            />
+
+            <Stack.Screen
+              name="user"
+              component={User}
+              options={{ header: (props) => <TopBar {...props} /> }}
+            />
+
+          </Stack.Navigator>
+          {/* <DefaulHome/> */}
+        </NavigationContainer>
+        {/* </View > */}
         <BottomBar />
       </View>
     </View>
   );
 }
 
+// const stackScreenStyle = 
 const styles = StyleSheet.create({
   full: {
     flex: 1,

@@ -5,12 +5,13 @@ import { View, ScrollView, Text, TouchableOpacity, Image } from 'react-native';
 import { styles } from './style';
 import Buttons from '../utils/buttons/buttons.jsx';
 import Images from '../utils/imagesComponent/images.jsx';
+import defaulStyles from '../../../styles.jsx';
 
 
-function ExitButton() {
+function ExitButton({ navigation }) {
     return (
         <TouchableOpacity
-            // onPress={() => { }}
+            onPress={() => { navigation.goBack() }}
             style={[styles.exitButton, styles.boxShadow]}
         >
             <Image
@@ -78,23 +79,27 @@ function Info({ user }) {
 
 }
 
-function User({ userKey }) {
+function User({ route, navigation }) {
+    const { userKey } = route.params
     const user = users[userKey];
 
     return (
-        <View style={styles.user}>
-            <View style={styles.line} />
-            <ExitButton />
-            <ScrollView style={styles.scrollView}>
-                <View style = {styles.boxImageHeader}>
-                    <Text style={styles.myHeader1}>{`${user.name}, ${AgeCaculate(user)}`}</Text>
-                    <Images user={user} />
-                </View>
-                <Info user={user} />
-                <View style={styles.spaceToButtons} />
-            </ScrollView>
-            <Buttons fast = {false} />
-        </View >
+        <View style = {defaulStyles.container}>
+            <View style={styles.user}>
+                {/* <Text style={{ color: 'black', fontSize: 25 }}> {userKey}</Text> */}
+                <View style={styles.line} />
+                <ExitButton navigation={navigation} />
+                <ScrollView style={styles.scrollView}>
+                    <View style={styles.boxImageHeader}>
+                        <Text style={styles.myHeader1}>{`${user.name}, ${AgeCaculate(user)}`}</Text>
+                        <Images user={user} />
+                    </View>
+                    <Info user={user} />
+                    <View style={styles.spaceToButtons} />
+                </ScrollView>
+                <Buttons fast={false} />
+            </View >
+        </View>
     )
 }
 export default User

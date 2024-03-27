@@ -7,11 +7,14 @@ import FadePanel from '../../../utils/fadePanel.jsx'
 import { LinearGradient } from 'expo-linear-gradient';
 import Buttons from '../buttons/buttons.jsx';
 
-function InfoButton() {
+function InfoButton({ navigation, user }) {
     return (
         <TouchableOpacity
-            // onPress={() => { }}
-            // onPress={onPress}
+            onPress={() => {
+                navigation.navigate('user',
+                    { userKey: user.nick }
+                );
+            }}
             style={infoButtonStyle.button}
         >
             <Image
@@ -35,24 +38,24 @@ function Slides({ images, indexImage, isHide }) {
         </FadePanel>
     )
 }
-function Info({ user }) {
+function Info({ user, navigation }) {
     return (
         <LinearGradient
-            colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.2)', 'rgba(0,0,0,0.4)', 'rgba(0,0,0,0.6)','rgba(0,0,0,0.8)', 'rgba(15,15,20,1)']}
+            colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.2)', 'rgba(0,0,0,0.4)', 'rgba(0,0,0,0.6)', 'rgba(0,0,0,0.8)', 'rgba(15,15,20,1)']}
             style={styles().absoluteInfoSpace}
         >
             <View style={{ height: 100 }} />
             <View style={styles().infoSpace}>
-                
+
                 <View style={styles().shortInfo}>
-                    <Text style={[styles().text, {fontSize:22, fontWeight:'500'}]}>
+                    <Text style={[styles().text, { fontSize: 22, fontWeight: '500' }]}>
                         {`${user.name} ${user.last_name}, ${AgeCaculate(user)} ${user.genre == 'male' ? "M" : 'F'}`}
                     </Text>
                     <Text style={styles().text}>{`${user.height} cm, ${user.weight} kg`}</Text>
                     <Text style={styles().text}>{`${user.sexual_orientation}`}</Text>
                 </View>
 
-                <InfoButton/>
+                <InfoButton navigation={navigation} user={user}/>
             </View>
 
             <Buttons fast={true} />
@@ -60,7 +63,7 @@ function Info({ user }) {
     )
 }
 
-function Images({ user, mode = 'default' }) {
+function Images({ user, mode = 'default', navigation }) {
     const images = user.images.map((path, index) => {
         return { id: index, uri: usersImagesRoot + path }
     })
@@ -110,7 +113,7 @@ function Images({ user, mode = 'default' }) {
                     setHideTimer(setTimeout(() => { setIsHide(true) }, 1000));
                 }}
             />
-            {mode == 'fast' && <Info user={user} />}
+            {mode == 'fast' && <Info user={user} navigation={navigation} />}
         </View>
     )
 }

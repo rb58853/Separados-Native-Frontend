@@ -6,12 +6,12 @@ import { styles } from './style.jsx';
 import Buttons from '../utils/buttons/buttons.jsx';
 import Images from '../utils/imagesComponent/images.jsx';
 
-function UserFast({ userKey }) {
+function UserFast({ userKey, navigation }) {
     const user = users[userKey];
 
     return (
         <View style={styles.user}>
-            <Images user={user} mode={'fast'} />
+            <Images user={user} mode={'fast'} navigation = {navigation} />
             <View style={styles.line} />
         </View >
     )
