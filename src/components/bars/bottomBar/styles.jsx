@@ -1,22 +1,21 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-    topBar: {
+    bottomBar: {
         width: '100%',
         height: 60,
         display: 'flex',
         flexDirection: 'column',
+        zIndex: 2,
+        backgroundColor: 'rgba(15,15,20,1)',
+
     },
     content: {
         flexGrow: 1,
         display: 'flex',
+        flexDirection: 'row',
+        marginHorizontal: 10,
         justifyContent: 'center',
-        marginLeft:5,
-    },
-    logo: {
-        height: '70%',
-        backgroundColor: 'white',
-        aspectRatio: 4 / 1,
     },
     line: {
         backgroundColor: 'rgba(255,255,255,0.2)',
@@ -29,8 +28,7 @@ export const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         alignSelf: 'center',
-        justifyContent:'center',
-        // backgroundColor:'white',
+        justifyContent: 'space-between',
     },
 
     button: {

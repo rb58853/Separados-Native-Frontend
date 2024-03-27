@@ -30,7 +30,7 @@ function Buttons() {
 
 function BottomBar() {
     return (
-        <View style={styles.topBar}>
+        <View style={styles.bottomBar}>
             <View style={styles.line} />
             <View style={styles.content}>
                 <Buttons />

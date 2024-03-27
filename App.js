@@ -16,8 +16,6 @@ export default function App() {
   return (
     <View style={styles.full}>
       <View style={styles.app}>
-        {/* <TopBar /> */}
-        {/* <View style={styles.container}> */}
         <NavigationContainer>
           <Stack.Navigator initialRouteName="home">
             <Stack.Screen
@@ -29,14 +27,11 @@ export default function App() {
             <Stack.Screen
               name="user"
               component={User}
-              options={{ header: (props) => <TopBar {...props} /> }}
+              options={{ headerShown: false }}
             />
-
           </Stack.Navigator>
-          {/* <DefaulHome/> */}
         </NavigationContainer>
-        {/* </View > */}
-        <BottomBar />
+        {/* <BottomBar /> */}
       </View>
     </View>
   );
