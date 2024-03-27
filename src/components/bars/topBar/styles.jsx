@@ -15,7 +15,12 @@ export const styles = StyleSheet.create({
     },
     logo: {
         height: '70%',
-        backgroundColor: 'white',
+        aspectRatio: 4 / 1,
+    },
+
+    image: {
+        height: "100%",
+        backgroundColor: 'transparent',
         aspectRatio: 4 / 1,
     },
     line: {

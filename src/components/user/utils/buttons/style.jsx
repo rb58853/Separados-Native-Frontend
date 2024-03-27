@@ -34,6 +34,11 @@ export const perfilStyles = StyleSheet.create({
         // borderWidth: 1,
 
     },
+    buttonImageBack: {
+        height: '60%',
+        width: '60%',
+        // backgroundColor:'white',
+    },
     buttonImage: {
         height: '50%',
         width: '50%',

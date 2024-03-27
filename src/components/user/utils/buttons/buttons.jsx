@@ -1,11 +1,24 @@
-import { View, Image, TouchableOpacity} from 'react-native';
-import {perfilStyles } from './style.jsx';
+import { View, Image, TouchableOpacity } from 'react-native';
+import { perfilStyles } from './style.jsx';
+import { LinearGradient } from 'expo-linear-gradient';
+import { appGradientColors } from '../../../../styles.jsx'
 
-function Button({ image }) {
+function Buttons({ fast = false }) {
+    return (
+        <View style={perfilStyles[`buttons${fast ? 'Fast' : ''}`]}>
+            <RestoreButton/>
+            <IgnoreButton/>
+            <LikeButton />
+            <SuperLikeButton />
+            <ShareButton />
+        </View>
+    );
+}
+
+function Button({ image, colors }) {
     return (
         <TouchableOpacity
             // onPress={() => { }}
-            // onPress={onPress}
             style={perfilStyles.button}
         >
             <Image
@@ -16,23 +29,40 @@ function Button({ image }) {
     )
 };
 
-function Buttons({fast = false}) {
-    const star = require('./icons/star.png');
-    const heart = require('./icons/heart.png');
-    const block = require('./icons/block.png');
-    const message = require('./icons/message.png');
-    const notification = require('./icons/notification.png');
-    // const [active, setActive] = useState(0)
-
+function LikeButton() {
+    const image = require('./icons/like.png');
     return (
-        <View style={perfilStyles[`buttons${fast?'Fast':''}`]}>
-            <Button image={notification} />
-            <Button image={block} />
-            <Button image={heart} />
-            <Button image={message} />
-            <Button image={star} />
-        </View>
-    );
+        <Button image={image}/>
+    )
 }
+
+function SuperLikeButton() {
+    const image = require('./icons/superLike.png');
+    return (
+        <Button image={image} />
+    )
+}
+
+function IgnoreButton() {
+    const image = require('./icons/block.png');
+    return (
+        <Button image={image} />
+    )
+}
+
+function RestoreButton() {
+    const image = require('./icons/restore.png');
+    return (
+        <Button image={image} />
+    )
+}
+
+function ShareButton() {
+    const image = require('./icons/share.png');
+    return (
+        <Button image={image} />
+    )
+}
+
 
 export default Buttons
