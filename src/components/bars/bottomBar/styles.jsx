@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
     bottomBar: {
         width: '100%',
-        height: 60,
+        height: 50,
         display: 'flex',
         flexDirection: 'column',
         zIndex: 2,
@@ -39,15 +39,15 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         // backgroundColor: 'gray',
     },
-    buttonImage: {
-        height: '80%',
-        width: '80%',
-        backgroundColor: 'white',
+
+    buttonImageBack: {
+        height: '60%',
+        width: '60%',
+        // backgroundColor:'white',
     },
 
-    buttonImageActive: {
-        height: '80%',
-        width: '80%',
-        backgroundColor: 'red',
+    buttonImage: {
+        height: '100%',
+        width: '100%',
     },
 });

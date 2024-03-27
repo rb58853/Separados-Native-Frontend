@@ -16,10 +16,19 @@ function TopBar() {
                         source={require('./icons/logo.png')}
                     />
                 </LinearGradient>
+                
+                <View style = {styles.buttons}>
+                    <View style= {styles.button}>
+                        
+                    </View>
+
+                    <View style= {styles.button}>
+                        
+                    </View>
+                </View>
             </View>
             <View style={styles.line} />
         </View>
-
     )
 }
 export default TopBar

@@ -10,9 +10,12 @@ export const styles = StyleSheet.create({
     content: {
         flexGrow: 1,
         display: 'flex',
-        justifyContent: 'center',
-        marginLeft:5,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginHorizontal: 7,
     },
+    
     logo: {
         height: '70%',
         aspectRatio: 4 / 1,
@@ -27,5 +30,19 @@ export const styles = StyleSheet.create({
         backgroundColor: 'rgba(255,255,255,0.2)',
         height: 1,
         marginTop: 'auto',
+    },
+    buttons: {
+        display: 'flex',
+        flexDirection: 'row',
+        height: '100%',
+        gap: 10,
+        justifyContent: 'center',
+        alignItems: 'center'
+
+    },
+    button: {
+        backgroundColor: 'white',
+        height: '80%',
+        aspectRatio: 1 / 1,
     },
 });

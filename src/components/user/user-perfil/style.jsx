@@ -67,7 +67,7 @@ export const styles = StyleSheet.create({
     },
 
     tagActive: {
-        backgroundColor: `rgb(255, 0, 68)`,
+        // backgroundColor: `rgb(255, 0, 68)`,
         color: 'white',
         padding: 7,
         borderRadius: 15,

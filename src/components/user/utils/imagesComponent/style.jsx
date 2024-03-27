@@ -71,7 +71,7 @@ let styleSheetDefault = StyleSheet.create({
     infoSpace: {
         display: 'flex',
         flexDirection: 'row',
-        alignItems: 'center',
+        alignItems: 'flex-end',
         // backgroundColor: 'black',
         marginLeft: 20,
         marginRight: 20,
@@ -114,7 +114,7 @@ export const infoButtonStyle = StyleSheet.create(
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            opacity: 0.5,
+            opacity: 0.8,
 
         },
 

@@ -6,6 +6,8 @@ import { styles } from './style';
 import Buttons from '../utils/buttons/buttons.jsx';
 import Images from '../utils/imagesComponent/images.jsx';
 import defaulStyles from '../../../styles.jsx';
+import { appGradientColors } from '../../../styles.jsx'
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 function ExitButton({ navigation }) {
@@ -27,9 +29,14 @@ function Tags({ user }) {
     user.tags.forEach((tag) => {
         if (users[perfil.key].tags.includes(tag)) {
             tags.push(
-                <Text style={styles.tagActive}>
-                    {tag}
-                </Text>
+                <LinearGradient
+                    colors={appGradientColors.standart}
+                    style={styles.tagActive}
+                >
+                    <Text style = {styles.text}>
+                        {tag}
+                    </Text>
+                </LinearGradient>
             )
         }
     })
@@ -84,7 +91,7 @@ function User({ route, navigation }) {
     const user = users[userKey];
 
     return (
-        <View style = {defaulStyles.container}>
+        <View style={defaulStyles.container}>
             <View style={styles.user}>
                 {/* <Text style={{ color: 'black', fontSize: 25 }}> {userKey}</Text> */}
                 <View style={styles.line} />
