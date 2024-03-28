@@ -21,6 +21,7 @@ export default function App() {
 
   return (
     <View style={styles.full}>
+      <View style={styles.statusBar} />
       <Provider store={store}>
         <Content />
       </Provider>
@@ -34,7 +35,7 @@ function Content() {
   useEffect(() => {
     dispatch(setActive(true));
   }, [dispatch]);
-  
+
   return (
     <View style={styles.app}>
       <NavigationContainer>
@@ -72,8 +73,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'rgba(15,15,20,1)',
   },
+  statusBar:{
+    height: Constants.statusBarHeight,
+    backgroundColor:"green",
+    backgroundColor: 'rgba(15,15,20,1)',
+    zIndex:1000,
+  },
   app: {
-    marginTop: Constants.statusBarHeight,
     color: 'white',
     // backgroundColor:"green",
     flex: 1,

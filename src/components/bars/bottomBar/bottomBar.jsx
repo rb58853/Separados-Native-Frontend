@@ -1,9 +1,10 @@
-import { View, Image, TouchableOpacity, Text, StatusBar } from "react-native";
+import { View, Image, Pressable } from "react-native";
 import { styles } from './styles.jsx'
 import { LinearGradient } from "expo-linear-gradient";
 import { appGradientColors } from '../../../styles.jsx'
 import { useNavigation } from "@react-navigation/native";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setScreen } from '../../../store/bottomBar/bottomBarSlice.jsx'
 
 function BottomBar() {
     const bottomBarStore = useSelector((state) => (state.bottomBar))
@@ -36,7 +37,7 @@ function Buttons() {
 
 function Button({ image, active, onPress }) {
     return (
-        <TouchableOpacity
+        <Pressable
             onPress={onPress}
             style={styles.button}
         >
@@ -49,38 +50,54 @@ function Button({ image, active, onPress }) {
                     source={image}
                 />
             </LinearGradient>
-        </TouchableOpacity>
+        </Pressable>
     )
 };
 
 function HomeButton({ navigation }) {
+    const dispatch = useDispatch();
     const bottomBarStore = useSelector((state) => (state.bottomBar))
-
-    const onPress = () => { navigation.navigate('home') }
+    const onPress = () => {
+        dispatch(setScreen('home'));
+        navigation.navigate('home')
+    }
     const image = require('./icons/home.png');
+
     return <Button image={image} active={bottomBarStore.screen == 'home'} onPress={onPress} />
 }
 
 function MessageButton({ navigation }) {
+    const bottomBarStore = useSelector((state) => (state.bottomBar))
     const image = require('./icons/message.png');
-    return <Button image={image} />
+
+    return <Button active={bottomBarStore.screen == 'message'} image={image} />
 }
 
 function ProfileButton({ navigation }) {
+    const bottomBarStore = useSelector((state) => (state.bottomBar))
     const image = require('./icons/profile.png');
-    return <Button image={image} />
+
+    return <Button active={bottomBarStore.screen == 'profile'} image={image} />
 }
 
 function SearchButton({ navigation }) {
+    const bottomBarStore = useSelector((state) => (state.bottomBar))
     const image = require('./icons/search.png');
-    return <Button image={image} />
+
+    return <Button active={bottomBarStore.screen == 'search'} image={image} />
 }
 
 function ReelsButton({ navigation }) {
-    const onPress = () => { navigation.navigate('reels') }
+    const dispatch = useDispatch();
+    const bottomBarStore = useSelector((state) => (state.bottomBar))
+    const onPress = () => {
+        dispatch(setScreen('reels'));
+        navigation.navigate('reels');
 
+    }
     const image = require('./icons/star.png');
-    return <Button image={image} onPress={onPress} />
+
+    return <Button active={bottomBarStore.screen == 'reels'} image={image} onPress={onPress} />
 }
 
 export default BottomBar
