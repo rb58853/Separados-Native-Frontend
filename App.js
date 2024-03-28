@@ -9,30 +9,43 @@ import BottomBar from './src/components/bars/bottomBar/bottomBar.jsx';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Reels from './src/components/home/reels/reels.jsx';
+import { Provider } from 'react-redux';
+import { store } from './src/store/store.js';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <View style={styles.full}>
-      <View style={styles.app}>
-        <NavigationContainer>
-          <Stack.Navigator initialRouteName="home">
-            <Stack.Screen
-              name="home"
-              component={DefaulHome}
-              options={{ header: (props) => <TopBar {...props} /> }}
-            />
+      <Provider store={store}>
+        <View style={styles.app}>
+          <NavigationContainer>
+            <Stack.Navigator initialRouteName="home">
 
-            <Stack.Screen
-              name="user"
-              component={User}
-              options={{ headerShown: false }}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
-        {/* <BottomBar /> */}
-      </View>
+              <Stack.Screen
+                name="home"
+                component={DefaulHome}
+                options={{ header: (props) => <TopBar {...props} /> }}
+              />
+
+              <Stack.Screen
+                name="user"
+                component={User}
+                options={{ headerShown: false }}
+              />
+
+              <Stack.Screen
+                name="reels"
+                component={Reels}
+                options={{ headerShown: false }}
+              />
+
+            </Stack.Navigator>
+            <BottomBar />
+          </NavigationContainer>
+        </View>
+      </Provider>
     </View>
   );
 }

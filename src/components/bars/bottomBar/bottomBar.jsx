@@ -1,7 +1,9 @@
-import { View, Image, TouchableOpacity } from "react-native";
+import { View, Image, TouchableOpacity, Text } from "react-native";
 import { styles } from './styles.jsx'
 import { LinearGradient } from "expo-linear-gradient";
 import { appGradientColors } from '../../../styles.jsx'
+import { useNavigation } from "@react-navigation/native";
+import { useSelector } from "react-redux";
 
 function BottomBar() {
     return (
@@ -16,22 +18,25 @@ function BottomBar() {
 }
 
 function Buttons() {
+    const navigation = useNavigation()
+    // const bottomBarStore = useSelector((state)=>(state.bottomBar))
+
     return (
         <View style={styles.buttons}>
-            <HomeButton />
-            <SearchButton />
-            <ReelsButton />
-            <MessageButton />
-            <ProfileButton />
+            <HomeButton navigation={navigation} />
+            <SearchButton navigation={navigation} />
+            <ReelsButton navigation={navigation} />
+            <MessageButton navigation={navigation} />
+            <ProfileButton navigation={navigation} />
         </View>
     )
 }
 
 
-function Button({ image, active }) {
+function Button({ image, active, onPress }) {
     return (
         <TouchableOpacity
-            // onPress={onPress}
+            onPress={onPress}
             style={styles.button}
         >
             <LinearGradient
@@ -47,29 +52,34 @@ function Button({ image, active }) {
     )
 };
 
-function HomeButton() {
+function HomeButton({ navigation }) {
+    const bottomBarStore = useSelector((state) => (state.bottomBar))
+
+    const onPress = () => { navigation.navigate('home') }
     const image = require('./icons/home.png');
-    return <Button image={image} active={true}/>
+    return <Button image={image} active={bottomBarStore.screen == 'home'} onPress={onPress} />
 }
 
-function MessageButton() {
+function MessageButton({ navigation }) {
     const image = require('./icons/message.png');
     return <Button image={image} />
 }
 
-function ProfileButton() {
+function ProfileButton({ navigation }) {
     const image = require('./icons/profile.png');
     return <Button image={image} />
 }
 
-function SearchButton() {
+function SearchButton({ navigation }) {
     const image = require('./icons/search.png');
     return <Button image={image} />
 }
 
-function ReelsButton() {
+function ReelsButton({ navigation }) {
+    const onPress = () => { navigation.navigate('reels') }
+
     const image = require('./icons/star.png');
-    return <Button image={image} />
+    return <Button image={image} onPress={onPress} />
 }
 
 export default BottomBar

@@ -6,7 +6,7 @@ import perfil from "../../../data/perfil";
 import BottomBar from "../../bars/bottomBar/bottomBar";
 import defaulStyles from "../../../styles";
 
-function DefaulHome({ navigation }) {
+function Reels({ navigation }) {
     const usersView = []
     Object.values(users).forEach((user_, index) => {
         if (user_.nick != 'my_user')
@@ -34,13 +34,11 @@ function DefaulHome({ navigation }) {
                 horizontal={false}
                 keyExtractor={item => item.id}
                 renderItem={renderItem}
-                style={{ backgroundColor: 'rgba(15,15,20,1)' }}
+                style={{ backgroundColor: 'rgba(222,222,222,1)' }}
                 contentContainerStyle={{ gap: 3 }}
             // showsHorizontalScrollIndicator={false}
             />
-            {/* TODO Esto hay que cambiarlo en el futuro... las barras se van a comportar independiente usando react redux */}
-            {/* <BottomBar /> */}
         </View>
     )
 }
-export default DefaulHome
+export default Reels
