@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
     },
     
     logo: {
-        height: '70%',
+        height: '55%',
         aspectRatio: 4 / 1,
     },
 
@@ -41,8 +41,13 @@ export const styles = StyleSheet.create({
 
     },
     button: {
-        backgroundColor: 'white',
-        height: '80%',
-        aspectRatio: 1 / 1,
+        // backgroundColor: 'white',
+        height: '70%',
+        aspectRatio: 9 / 9,
     },
+    buttonImage:{
+        height:"100%",
+        width:'100%',
+        // backgroundColor:'blue',
+    }
 });

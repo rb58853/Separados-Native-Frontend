@@ -11,8 +11,15 @@ function UserReel({ userKey, navigation }) {
 
     return (
         <View style={styles.user}>
-            <Images user={user} mode={'fast'} navigation = {navigation} />
-            <View style={styles.line} />
+            <Images user={user} mode={'fast'} navigation={navigation} />
+            <View style={styles.boxSpace}>
+                <Text style={styles.myHeader2}>Sobre mi</Text>
+                <Text style={styles.text}>
+                    {user.bibliografy}
+                </Text>
+            </View >
+
+            {/* <View style={styles.line} /> */}
         </View >
     )
 }

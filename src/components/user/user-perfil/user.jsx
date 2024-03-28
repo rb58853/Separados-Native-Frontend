@@ -8,6 +8,8 @@ import Images from '../utils/imagesComponent/images.jsx';
 import defaulStyles from '../../../styles.jsx';
 import { appGradientColors } from '../../../styles.jsx'
 import { LinearGradient } from 'expo-linear-gradient';
+import { useDispatch } from 'react-redux';
+import { setActive } from '../../../store/bottomBar/bottomBarSlice.jsx';
 
 // import { useDispatch } from 'react-redux';
 // import { useIsFocused } from '@react-navigation/native';
@@ -16,9 +18,14 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 
 function ExitButton({ navigation }) {
+    const dispatch = useDispatch();
     return (
         <TouchableOpacity
-            onPress={() => { navigation.goBack() }}
+            onPress={() => {
+                navigation.goBack();
+                dispatch(setActive(true))
+
+            }}
             style={[styles.exitButton, styles.boxShadow]}
         >
             <Image
@@ -38,7 +45,7 @@ function Tags({ user }) {
                     colors={appGradientColors.standart}
                     style={styles.tagActive}
                 >
-                    <Text style = {styles.text}>
+                    <Text style={styles.text}>
                         {tag}
                     </Text>
                 </LinearGradient>

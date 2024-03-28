@@ -39,7 +39,9 @@ function Content() {
   return (
     <View style={styles.app}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="home">
+        <Stack.Navigator
+          initialRouteName="home"
+        >
           <Stack.Screen
             name="home"
             component={DefaulHome}
@@ -73,11 +75,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'rgba(15,15,20,1)',
   },
-  statusBar:{
+  statusBar: {
     height: Constants.statusBarHeight,
-    backgroundColor:"green",
+    backgroundColor: "green",
     backgroundColor: 'rgba(15,15,20,1)',
-    zIndex:1000,
+    zIndex: 1000,
   },
   app: {
     color: 'white',

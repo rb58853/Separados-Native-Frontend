@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
-import { AgeCaculate, SwitchImage } from '../utils.jsx';
+import { AgeCaculate, CalculateDistance, SwitchImage } from '../utils.jsx';
 import { View, Image, FlatList, Text, TouchableOpacity } from 'react-native';
-import styles, { infoButtonStyle } from './style.jsx';
+import styles, { infoStyle } from './style.jsx';
 import { usersImagesRoot } from '../../../../environment/environment.js'
 import FadePanel from '../../../utils/fadePanel.jsx'
 import { LinearGradient } from 'expo-linear-gradient';
 import Buttons from '../buttons/buttons.jsx';
 import { useDispatch } from 'react-redux';
-import {setActive} from '../../../../store/bottomBar/bottomBarSlice.jsx'
+import { setActive } from '../../../../store/bottomBar/bottomBarSlice.jsx'
 
 function InfoButton({ navigation, user }) {
     const dispatch = useDispatch()
@@ -19,10 +19,10 @@ function InfoButton({ navigation, user }) {
                 );
                 dispatch(setActive(false))
             }}
-            style={infoButtonStyle.button}
+            style={infoStyle.button}
         >
             <Image
-                style={infoButtonStyle.buttonImage}
+                style={infoStyle.buttonImage}
                 source={require('./icons/infoDark.png')}
             />
         </TouchableOpacity>
@@ -43,23 +43,59 @@ function Slides({ images, indexImage, isHide }) {
     )
 }
 function Info({ user, navigation }) {
+
     return (
         <LinearGradient
             colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.2)', 'rgba(0,0,0,0.4)', 'rgba(0,0,0,0.6)', 'rgba(0,0,0,0.8)', 'rgba(15,15,20,1)']}
             style={styles().absoluteInfoSpace}
         >
             <View style={{ height: 100 }} />
-            <View style={styles().infoSpace}>
+            <View style={infoStyle.infoSpace}>
 
-                <View style={styles().shortInfo}>
-                    <Text style={[styles().text, { fontSize: 22, fontWeight: '500' }]}>
-                        {`${user.name} ${user.last_name}, ${AgeCaculate(user)} ${user.genre == 'male' ? "M" : 'F'}`}
-                    </Text>
-                    <Text style={styles().text}>{`${user.height} cm, ${user.weight} kg`}</Text>
-                    <Text style={styles().text}>{`${user.sexual_orientation}`}</Text>
+                <View style={infoStyle.shortInfo}>
+
+                    <View style={infoStyle.infoRow}>
+
+                        <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-end' }}>
+                            <Text style={{ fontSize: 28, fontWeight: '500', color: 'white' }}>
+                                {`${user.name} ${user.last_name} `}
+                            </Text>
+                            <Text style={{ fontSize: 23, fontWeight: '300', color: 'white' }}>
+                                {`${AgeCaculate(user)}`}
+                            </Text>
+                        </View>
+
+                        {/* {user.genre == 'male' && <Image style={infoStyle.genreImage} source={require('./icons/male.png')} />}
+                        {user.genre == 'female' && <Image style={infoStyle.genreImage} source={require('./icons/female.png')} />} */}
+
+                    </View>
+
+                    <View style={infoStyle.infoRow}>
+                        <Image style={infoStyle.infoRowImage} source={require('./icons/metrics.png')} />
+                        <Text style={styles().text}>{`${user.height} cm, ${user.weight} kg`}</Text>
+                    </View>
+
+                    <View style={infoStyle.infoRow}>
+                        {user.genre == 'male' && <Image style={infoStyle.infoRowImage} source={require('./icons/male.png')} />}
+                        {user.genre == 'female' && <Image style={infoStyle.infoRowImage} source={require('./icons/female.png')} />}
+
+                        {/* <Image style={infoStyle.infoRowImage} source={require('./icons/orientation.png')} /> */}
+                        <Text style={styles().text}>{`${user.sexual_orientation}`}</Text>
+                    </View>
+
+                    <View style={infoStyle.infoRow}>
+                        <Image style={infoStyle.infoRowImage} source={require('./icons/profession.png')} />
+                        <Text style={styles().text}>{`${user.profession}`}</Text>
+                    </View>
+
+                    <View style={infoStyle.infoRow}>
+                        <Image style={infoStyle.infoRowImage} source={require('./icons/location.png')} />
+                        <Text style={styles().text}>{`${CalculateDistance(user)} km`}</Text>
+                    </View>
+
                 </View>
 
-                <InfoButton navigation={navigation} user={user}/>
+                <InfoButton navigation={navigation} user={user} />
             </View>
 
             <Buttons fast={true} />

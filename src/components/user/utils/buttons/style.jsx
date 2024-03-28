@@ -14,7 +14,7 @@ export const perfilStyles = StyleSheet.create({
 
     buttonsFast: {
         marginTop:10,
-        bottom: 0,
+        marginBottom:5,
         height: 60,
         display: 'flex',
         flexDirection: 'row',

@@ -66,26 +66,10 @@ let styleSheetDefault = StyleSheet.create({
     },
 
     text: {
-        color: 'white',
+        color: 'rgba(255,255,255,0.9)',
+        fontWeight:'200',
     },
-    infoSpace: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'flex-end',
-        // backgroundColor: 'black',
-        marginLeft: 20,
-        marginRight: 20,
-        marginBottom: 20,
-        pointerEvents: 'box-none',
-    },
-    shortInfo: {
-        display: 'flex',
-        flexDirection: 'column',
-        // backgroundColor:'rgba(0,0,0,0.1)',
-        // padding:10,
-        // borderRadius:10,
-    },
-
+  
 });
 
 if (mode == 'light') {
@@ -104,7 +88,7 @@ const styleSheetFast = StyleSheet.create({
     },
 })
 
-export const infoButtonStyle = StyleSheet.create(
+export const infoStyle = StyleSheet.create(
     {
         button: {
             marginLeft: 'auto',
@@ -122,6 +106,38 @@ export const infoButtonStyle = StyleSheet.create(
             height: '100%',
             width: '100%',
         },
+
+        infoSpace: {
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'flex-end',
+            marginLeft: 20,
+            marginRight: 20,
+            marginBottom: 5,
+            pointerEvents: 'box-none',
+        },
+        shortInfo: {
+            display: 'flex',
+            flexDirection: 'column',
+            gap:1,
+        },
+        infoRow:{
+            // backgroundColor:'black',
+            display:'flex',
+            flexDirection:'row',
+            alignItems: 'center',
+            gap: 5,
+        },
+        infoRowImage:{
+            height: 14,
+            width: 14,
+            opacity: 0.8,
+        },
+        genreImage:{
+            height: 24,
+            width: 24,
+            opacity: 1,
+        }
 
     }
 )

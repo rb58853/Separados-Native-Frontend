@@ -1,8 +1,11 @@
+import perfil from '../../../data/perfil.js'
+import users from '../../../data/users.js';
+
 export function SwitchImage(x, deltaX, setIndexImage, indexImage, imagesLenght) {
     if (x > deltaX && indexImage < imagesLenght - 1) {
         setIndexImage(indexImage + 1)
     }
-    if (x < deltaX && indexImage>0) {
+    if (x < deltaX && indexImage > 0) {
         setIndexImage(indexImage - 1)
     }
 }
@@ -24,4 +27,13 @@ export function AgeCaculate(user) {
         age -= 1
     }
     return age
+}
+
+export function CalculateDistance(user) {
+    const userPos = user.position;
+    const mePos = users[perfil['key']].position;
+    const x = userPos[0] - mePos[0]
+    const y = userPos[1] - mePos[1]
+    return (Math.sqrt(x * x + y * y) / 1000).toFixed(1)
+    // return 10
 }

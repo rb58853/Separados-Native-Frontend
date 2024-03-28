@@ -30,6 +30,8 @@ const users =
         municipe: 'Vedado',
         genre: 'female',
         sexual_orientation: 'heterosexual',
+        position: [1111,4222],
+        profession: 'modelo'
     },
     "anna": {
         nick: 'anna',
@@ -52,6 +54,8 @@ const users =
         municipe: 'Vedado',
         genre: 'female',
         sexual_orientation: 'heterosexual',
+        position: [111,2722],
+        profession: 'abogada'
     },
     "sofia": {
         nick: 'sofia',
@@ -76,6 +80,8 @@ const users =
         municipe: 'Vedado',
         genre: 'female',
         sexual_orientation: 'heterosexual',
+        position: [1441,2122],
+        profession: 'contable'
     },
 
 
@@ -101,6 +107,8 @@ const users =
         municipe: 'Vedado',
         genre: 'male',
         sexual_orientation: 'heterosexual',
+        position: [11,22242],
+        profession: 'fisiculturista'
     },
 
     "mia": {
@@ -121,6 +129,8 @@ const users =
         municipe: 'Vedado',
         genre: 'female',
         sexual_orientation: 'heterosexual',
+        position: [7111,9102],
+        profession: 'ingeniera de sofware'
     },
 
     "my_user": {
@@ -138,7 +148,9 @@ const users =
         height: "180",
         weight: "70",
         date_born: "22/3/1996",
-        tags: ['animales', 'gatos', 'programacion', 'literatura', 'mosquitos', 'perros']
+        tags: ['animales', 'gatos', 'programacion', 'literatura', 'mosquitos', 'perros'],
+        position: [2121,4222],
+        profession: 'none'
     },
 
     "olivia": {
@@ -161,6 +173,8 @@ const users =
         municipe: 'Vedado',
         genre: 'female',
         sexual_orientation: 'heterosexual',
+        position: [4111,1222],
+        profession: 'none'
     },
 
 
