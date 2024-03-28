@@ -9,6 +9,11 @@ import defaulStyles from '../../../styles.jsx';
 import { appGradientColors } from '../../../styles.jsx'
 import { LinearGradient } from 'expo-linear-gradient';
 
+// import { useDispatch } from 'react-redux';
+// import { useIsFocused } from '@react-navigation/native';
+// import { setActive } from '../../../store/bottomBar/bottomBarSlice.jsx';
+// import { useEffect } from 'react';
+
 
 function ExitButton({ navigation }) {
     return (
@@ -89,6 +94,12 @@ function Info({ user }) {
 function User({ route, navigation }) {
     const { userKey } = route.params
     const user = users[userKey];
+
+    // const dispatch = useDispatch()
+    // const isFocused = useIsFocused();
+    // useEffect(() => {
+    //     dispatch(setActive(true))
+    // }, [dispatch, isFocused]);
 
     return (
         <View style={defaulStyles.container}>

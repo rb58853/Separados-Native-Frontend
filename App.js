@@ -1,5 +1,4 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import Test from './src/components/test/Test';
 import Constants from 'expo-constants';
 import User from './src/components/user/user-perfil/user';
 import UserFast from './src/components/user/userFast/userFast.jsx';
@@ -10,45 +9,62 @@ import BottomBar from './src/components/bars/bottomBar/bottomBar.jsx';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Reels from './src/components/home/reels/reels.jsx';
-import { Provider } from 'react-redux';
+import { Provider, useDispatch } from 'react-redux';
 import { store } from './src/store/store.js';
+import { setActive } from './src/store/bottomBar/bottomBarSlice.jsx';
+import { useEffect } from 'react';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+
+
   return (
     <View style={styles.full}>
       <Provider store={store}>
-        <View style={styles.app}>
-          <NavigationContainer>
-            <Stack.Navigator initialRouteName="home">
-
-              <Stack.Screen
-                name="home"
-                component={DefaulHome}
-                options={{ header: (props) => <TopBar {...props} /> }}
-              />
-
-              <Stack.Screen
-                name="user"
-                component={User}
-                options={{ headerShown: false }}
-              />
-
-              <Stack.Screen
-                name="reels"
-                component={Reels}
-                options={{ headerShown: false }}
-              />
-
-            </Stack.Navigator>
-            <BottomBar />
-          </NavigationContainer>
-        </View>
+        <Content />
       </Provider>
     </View>
   );
 }
+
+function Content() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setActive(true));
+  }, [dispatch]);
+  
+  return (
+    <View style={styles.app}>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="home">
+          <Stack.Screen
+            name="home"
+            component={DefaulHome}
+            options={{ header: (props) => <TopBar {...props} /> }}
+          />
+
+          <Stack.Screen
+            name="user"
+            component={User}
+            options={{ headerShown: false }}
+          />
+
+          <Stack.Screen
+            name="reels"
+            component={Reels}
+            options={{ headerShown: false }}
+          />
+
+        </Stack.Navigator>
+        <BottomBar />
+      </NavigationContainer>
+    </View>
+  )
+}
+
+
 
 // const stackScreenStyle = 
 const styles = StyleSheet.create({
@@ -59,6 +75,7 @@ const styles = StyleSheet.create({
   app: {
     marginTop: Constants.statusBarHeight,
     color: 'white',
+    // backgroundColor:"green",
     flex: 1,
   },
   container: {

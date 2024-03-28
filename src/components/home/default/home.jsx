@@ -1,10 +1,13 @@
 import { View, Text, FlatList } from "react-native";
 import users from "../../../data/users";
 import UserFast from "../../user/userFast/userFast";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import perfil from "../../../data/perfil";
 import BottomBar from "../../bars/bottomBar/bottomBar";
 import defaulStyles from "../../../styles";
+import { useDispatch } from "react-redux";
+import { setActive } from "../../../store/bottomBar/bottomBarSlice";
+import { useIsFocused } from "@react-navigation/native";
 
 function DefaulHome({ navigation }) {
     const usersView = []
@@ -20,11 +23,11 @@ function DefaulHome({ navigation }) {
     const [indexUser, setIndexUser] = useState(0)
 
     const ref = useRef()
-    // useEffect(() => {
-    //     if (ref.current) {
-    //         ref.current.scrollToIndex({ index: indexImage, animated: true });
-    //     }
-    // }, [indexUser]);
+
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(setActive(true))
+    }, [dispatch]);
 
     return (
         <View style={defaulStyles.container}>

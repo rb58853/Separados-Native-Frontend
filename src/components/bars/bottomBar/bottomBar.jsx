@@ -1,4 +1,4 @@
-import { View, Image, TouchableOpacity, Text } from "react-native";
+import { View, Image, TouchableOpacity, Text, StatusBar } from "react-native";
 import { styles } from './styles.jsx'
 import { LinearGradient } from "expo-linear-gradient";
 import { appGradientColors } from '../../../styles.jsx'
@@ -6,14 +6,15 @@ import { useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
 
 function BottomBar() {
+    const bottomBarStore = useSelector((state) => (state.bottomBar))
+
     return (
-        <View style={styles.bottomBar}>
+        <View style={bottomBarStore.active ? styles.bottomBar : styles.hide}>
             <View style={styles.line} />
             <View style={styles.content}>
                 <Buttons />
             </View>
         </View>
-
     )
 }
 

@@ -6,14 +6,18 @@ import { usersImagesRoot } from '../../../../environment/environment.js'
 import FadePanel from '../../../utils/fadePanel.jsx'
 import { LinearGradient } from 'expo-linear-gradient';
 import Buttons from '../buttons/buttons.jsx';
+import { useDispatch } from 'react-redux';
+import {setActive} from '../../../../store/bottomBar/bottomBarSlice.jsx'
 
 function InfoButton({ navigation, user }) {
+    const dispatch = useDispatch()
     return (
         <TouchableOpacity
             onPress={() => {
                 navigation.navigate('user',
                     { userKey: user.nick }
                 );
+                dispatch(setActive(false))
             }}
             style={infoButtonStyle.button}
         >

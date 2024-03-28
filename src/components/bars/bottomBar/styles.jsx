@@ -8,7 +8,9 @@ export const styles = StyleSheet.create({
         flexDirection: 'column',
         zIndex: 2,
         backgroundColor: 'rgba(15,15,20,1)',
-
+    },
+    hide: {
+        display:'none',
     },
     content: {
         flexGrow: 1,
