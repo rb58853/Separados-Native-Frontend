@@ -1,6 +1,6 @@
 const env = {
     mode: 'dark',
-    profile: 'my_user',
+    profile: 'clara',
     usersImagesRoot: 'http://192.168.200.251:8080/users/',
 }
 

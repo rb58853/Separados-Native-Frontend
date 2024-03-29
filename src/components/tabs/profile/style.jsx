@@ -12,21 +12,15 @@ export const styles = StyleSheet.create({
         // backgroundColor: 'rgba(152,152,220,1)',
         width: "98%"
     },
-    imagesSpace:{
-        padding: 10,
-        borderRadius: 10,
-        marginVertical: 10,
-        marginHorizontal: 0,
-        backgroundColor: 'rgba(255,255,255,0.05)',
-        borderRadius: 10,
-    },
+
     boxSpace: {
         padding: 10,
         borderRadius: 10,
-        marginVertical: 10,
+        marginVertical: 5,
         marginHorizontal: 0,
         backgroundColor: 'rgba(255,255,255,0.05)',
         borderRadius: 10,
+        width: '100%',
     },
     text: {
         color: 'white',
@@ -41,8 +35,8 @@ export const styles = StyleSheet.create({
     },
 
     myHeader2: {
-        marginLeft: 5,
-        marginBottom: 10,
+        // marginLeft: 5,
+        // marginBottom: 10,
         color: 'white',
         fontSize: 16,
         fontWeight: '600',
@@ -60,6 +54,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         gap: 10,
         marginTop: 5,
+        marginBottom: 5,
     },
 
     nameSpace: {
@@ -79,5 +74,75 @@ export const styles = StyleSheet.create({
         aspectRatio: 1 / 1,
         backgroundColor: 'white',
         borderRadius: 50,
+    },
+
+    imagesSpace: {
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        gap: 5,
+        width: '100%',
+        // backgroundColor:'gray'
+    },
+    shortImage: {
+        width: "32.415%",
+        // width: 100,
+        aspectRatio: 2 / 3,
+        height: 150,
+    },
+    image: {
+        height: '100%',
+        width: '100%',
+        borderRadius: 2,
+    },
+    tagsSpace: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        flexDirection: 'row',
+        gap: 10,
+        alignItems: 'center',
+    },
+
+    tag: {
+        color: 'white',
+        backgroundColor: 'rgba(255,255,255,0.1)',
+        padding: 5,
+        borderRadius: 100,
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    headerRow: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        // backgroundColor:'blue',
+        height: 22,
+        marginBottom: 10,
+    },
+    headerIcon: {
+        width: 18,
+        height: 18,
+        opacity: 0.6,
+    },
+    deleteIcon: {
+        width: 15,
+        height: 15,
+        opacity: 1,
+    },
+    newTag: {
+        borderRadius: 100,
+        height: 26,
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems:'center',
+        justifyContent:'center',
+        aspectRatio: 1/1,
+    },
+    plusImage: {
+        height: '70%',
+        width: '70%',
     }
+
 });

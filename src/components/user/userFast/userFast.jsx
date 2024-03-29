@@ -1,5 +1,4 @@
 import users from '../../../data/users.js';
-import perfil from '../../../data/perfil.js';
 import { AgeCaculate } from '../utils/utils.jsx';
 import { View, ScrollView, Text, TouchableOpacity, Image } from 'react-native';
 import { styles } from './style.jsx';

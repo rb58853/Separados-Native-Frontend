@@ -1,5 +1,5 @@
-import perfil from '../../../data/perfil.js'
 import users from '../../../data/users.js';
+import env from '../../../environment/environment.js';
 
 export function SwitchImage(x, deltaX, setIndexImage, indexImage, imagesLenght) {
     if (x > deltaX && indexImage < imagesLenght - 1) {
@@ -31,7 +31,7 @@ export function AgeCaculate(user) {
 
 export function CalculateDistance(user) {
     const userPos = user.position;
-    const mePos = users[perfil['key']].position;
+    const mePos = users[env['profile']].position;
     const x = userPos[0] - mePos[0]
     const y = userPos[1] - mePos[1]
     return (Math.sqrt(x * x + y * y) / 1000).toFixed(1)

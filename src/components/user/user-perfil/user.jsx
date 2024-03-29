@@ -1,6 +1,5 @@
 import React from 'react';
 import users from '../../../data/users';
-import perfil from '../../../data/perfil';
 import { AgeCaculate } from '../utils/utils';
 import { View, ScrollView, Text, TouchableOpacity, Image } from 'react-native';
 import { styles } from './style';
@@ -13,6 +12,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useDispatch } from 'react-redux';
 import { useFocusEffect } from '@react-navigation/native';
 import { setActive } from '../../../store/bottomBar/bottomBarSlice.jsx';
+import env from '../../../environment/environment.js';
 
 function ExitButton({ navigation }) {
     return (
@@ -33,7 +33,7 @@ function ExitButton({ navigation }) {
 function Tags({ user }) {
     const tags = []
     user.tags.forEach((tag) => {
-        if (users[perfil.key].tags.includes(tag)) {
+        if (users[env['profile']].tags.includes(tag)) {
             tags.push(
                 <LinearGradient
                     colors={appGradientColors.standart}
@@ -47,7 +47,7 @@ function Tags({ user }) {
         }
     })
     user.tags.forEach((tag) => {
-        if (!users[perfil.key].tags.includes(tag)) {
+        if (!users[env['profile']].tags.includes(tag)) {
             {
                 tags.push(
                     <Text style={styles.tag}>

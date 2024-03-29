@@ -15,7 +15,7 @@ function Buttons({ fast = false }) {
     );
 }
 
-function Button({ image, colors }) {
+function Button({ image}) {
     return (
         <TouchableOpacity
             // onPress={() => { }}

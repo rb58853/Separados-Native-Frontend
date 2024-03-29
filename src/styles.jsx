@@ -23,6 +23,7 @@ const defaulStyles = StyleSheet.create({
 export const appGradientColors = {
     standart: ['rgba(255, 20, 110,1)', 'rgba(255, 20, 90,1)', 'rgba(255, 50, 60,1)'],
     blue: ['rgba(20, 110,255,1)', 'rgba(20, 90,255,1)', 'rgba(50, 60,255,1)'],
+    green: ['(60, 255, 46, 1)', '(60, 255, 46, 1)', 'rgba(26, 173, 0, 1)'],
     white: ['rgba(255, 255, 255,1)', 'rgba(255, 255, 255,1)'],
     white80: ['rgba(255, 255, 255,0.8)', 'rgba(255, 255, 255,0.8)'],
 
