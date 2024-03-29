@@ -57,7 +57,6 @@ function Button({ image, active, onPress }) {
 };
 
 function HomeButton({ navigation }) {
-    const dispatch = useDispatch();
     const bottomBarStore = useSelector((state) => (state.bottomBar))
     const onPress = () => {
         navigation.navigate('home')
@@ -70,15 +69,17 @@ function HomeButton({ navigation }) {
 function MessageButton({ navigation }) {
     const bottomBarStore = useSelector((state) => (state.bottomBar))
     const image = require('./icons/message.png');
-
     return <Button active={bottomBarStore.screen == 'message'} image={image} />
 }
 
 function ProfileButton({ navigation }) {
     const bottomBarStore = useSelector((state) => (state.bottomBar))
     const image = require('./icons/profile.png');
+    const onPress = () => {
+        navigation.navigate('profile')
+    }
 
-    return <Button active={bottomBarStore.screen == 'profile'} image={image} />
+    return <Button active={bottomBarStore.screen == 'profile'} image={image} onPress={onPress} />
 }
 
 function SearchButton({ navigation }) {
@@ -89,7 +90,6 @@ function SearchButton({ navigation }) {
 }
 
 function ReelsButton({ navigation }) {
-    const dispatch = useDispatch();
     const bottomBarStore = useSelector((state) => (state.bottomBar))
     const onPress = () => {
         navigation.navigate('reels');

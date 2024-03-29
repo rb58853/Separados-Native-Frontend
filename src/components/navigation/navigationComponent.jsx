@@ -9,6 +9,7 @@ import Reels from '../tabs/reels/reels.jsx';
 import { useDispatch } from 'react-redux';
 import { setActive } from '../../store/bottomBar/bottomBarSlice.jsx';
 import { useEffect } from 'react';
+import Profile from '../tabs/profile/profile.jsx';
 
 
 const Stack = createNativeStackNavigator();
@@ -28,7 +29,10 @@ function NavigationContent() {
                 <Stack.Screen
                     name="home"
                     component={DefaulHome}
-                    options={{ header: (props) => <TopBar {...props} /> }}
+                    options={{
+                        header: (props) => <TopBar {...props} />,
+                        headerShown: 'float',
+                    }}
                 />
 
                 <Stack.Screen
@@ -41,6 +45,15 @@ function NavigationContent() {
                     name="reels"
                     component={Reels}
                     options={{ headerShown: false }}
+                />
+
+                <Stack.Screen
+                    name="profile"
+                    component={Profile}
+                    options={{
+                        header: (props) => <TopBar {...props} />,
+                        headerShown: 'float',
+                    }}
                 />
 
             </Stack.Navigator>

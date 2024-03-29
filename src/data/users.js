@@ -6,6 +6,7 @@ const users =
         last_name: "Galle",
         email: "user@email.com",
         perfil_photo: 'light/perfil.png',
+        short_bibliografy: 'ShortBibliografy',
         bibliografy: '🎬 Amante de las películas de ciencia ficción, especialmente "Guardianes de la Galaxia". 🎸 Me encanta la música rock y siempre llevo mi guitarra. 🍽️ Cocinero en mi tiempo libre, especialmente me gusta hacer lasaña. 🐶 Amante de los animales, especialmente de los perros. 🚀 Viajero en busca de nuevas aventuras. ¿Te unes a mí en esta búsqueda?',
         images: [
             'clara/2.jpg',
@@ -30,7 +31,7 @@ const users =
         municipe: 'Vedado',
         genre: 'female',
         sexual_orientation: 'heterosexual',
-        position: [1111,4222],
+        position: [1111, 4222],
         profession: 'modelo'
     },
     "anna": {
@@ -39,6 +40,7 @@ const users =
         last_name: "Johns",
         email: "user@email.com",
         perfil_photo: 'light/perfil.png',
+        short_bibliografy: 'ShortBibliografy',
         bibliografy: '🎬 Amante de las películas de ciencia ficción, especialmente "Guardianes de la Galaxia". 🎸 Me encanta la música rock y siempre llevo mi guitarra. 🍽️ Cocinero en mi tiempo libre, especialmente me gusta hacer lasaña. 🐶 Amante de los animales, especialmente de los perros. 🚀 Viajero en busca de nuevas aventuras. ¿Te unes a mí en esta búsqueda?',
         images: [
             'anna/1.jpg',
@@ -54,7 +56,7 @@ const users =
         municipe: 'Vedado',
         genre: 'female',
         sexual_orientation: 'heterosexual',
-        position: [111,2722],
+        position: [111, 2722],
         profession: 'abogada'
     },
     "sofia": {
@@ -63,6 +65,7 @@ const users =
         last_name: "Moreno",
         email: "user@email.com",
         perfil_photo: 'light/perfil.png',
+        short_bibliografy: 'ShortBibliografy',
         bibliografy: '🎬 Amante de las películas de ciencia ficción, especialmente "Guardianes de la Galaxia". 🎸 Me encanta la música rock y siempre llevo mi guitarra. 🍽️ Cocinero en mi tiempo libre, especialmente me gusta hacer lasaña. 🐶 Amante de los animales, especialmente de los perros. 🚀 Viajero en busca de nuevas aventuras. ¿Te unes a mí en esta búsqueda?',
         images: [
             'sofia/1.jpg',
@@ -80,7 +83,7 @@ const users =
         municipe: 'Vedado',
         genre: 'female',
         sexual_orientation: 'heterosexual',
-        position: [1441,2122],
+        position: [1441, 2122],
         profession: 'contable'
     },
 
@@ -91,6 +94,7 @@ const users =
         last_name: "Moreno",
         email: "user@email.com",
         perfil_photo: 'light/perfil.png',
+        short_bibliografy: 'ShortBibliografy',
         bibliografy: '🎬 Amante de las películas de ciencia ficción, especialmente "Guardianes de la Galaxia". 🎸 Me encanta la música rock y siempre llevo mi guitarra. 🍽️ Cocinero en mi tiempo libre, especialmente me gusta hacer lasaña. 🐶 Amante de los animales, especialmente de los perros. 🚀 Viajero en busca de nuevas aventuras. ¿Te unes a mí en esta búsqueda?',
         images: [
             'jashlem/1.jpg',
@@ -107,7 +111,7 @@ const users =
         municipe: 'Vedado',
         genre: 'male',
         sexual_orientation: 'heterosexual',
-        position: [11,22242],
+        position: [11, 22242],
         profession: 'fisiculturista'
     },
 
@@ -117,6 +121,7 @@ const users =
         last_name: "Wang",
         email: "user@email.com",
         perfil_photo: 'light/perfil.png',
+        short_bibliografy: 'ShortBibliografy',
         bibliografy: '🎬 Amante de las películas de ciencia ficción, especialmente "Guardianes de la Galaxia". 🎸 Me encanta la música rock y siempre llevo mi guitarra. 🍽️ Cocinero en mi tiempo libre, especialmente me gusta hacer lasaña. 🐶 Amante de los animales, especialmente de los perros. 🚀 Viajero en busca de nuevas aventuras. ¿Te unes a mí en esta búsqueda?',
         images: [
             'mia/1.jpg',
@@ -129,28 +134,27 @@ const users =
         municipe: 'Vedado',
         genre: 'female',
         sexual_orientation: 'heterosexual',
-        position: [7111,9102],
+        position: [7111, 9102],
         profession: 'ingeniera de sofware'
     },
 
     "my_user": {
         nick: 'my_user',
-        name: "Ismael",
-        last_name: "Garcia",
-        email: "user@email.com",
-        perfil_photo: 'light/perfil.png',
+        name: "Raul",
+        last_name: "Beltran",
+        email: "rb58853@gemail.com",
+        perfil_photo: 'raul/profile.jpg',
+        short_bibliografy: 'Computer Scientist',
         bibliografy: '🎬 Amante de las películas de ciencia ficción, especialmente "Guardianes de la Galaxia". 🎸 Me encanta la música rock y siempre llevo mi guitarra. 🍽️ Cocinero en mi tiempo libre, especialmente me gusta hacer lasaña. 🐶 Amante de los animales, especialmente de los perros. 🚀 Viajero en busca de nuevas aventuras. ¿Te unes a mí en esta búsqueda?',
         images: [
-            'mia/1.jpg',
-            // 'user1/2.png',
-            // 'user1/3.png',
+            'raul/1.jpg',
         ],
-        height: "180",
-        weight: "70",
-        date_born: "22/3/1996",
-        tags: ['animales', 'gatos', 'programacion', 'literatura', 'mosquitos', 'perros'],
-        position: [2121,4222],
-        profession: 'none'
+        height: "193",
+        weight: "86",
+        date_born: "17/5/1999",
+        tags: ['animales', 'gatos', 'programacion', 'literatura', 'perros', 'sabina', 'deportes'],
+        position: [2121, 4222],
+        profession: 'Computer Scientist'
     },
 
     "olivia": {
@@ -159,6 +163,7 @@ const users =
         last_name: "Perez",
         email: "user@email.com",
         perfil_photo: 'light/perfil.png',
+        short_bibliografy: 'ShortBibliografy',
         bibliografy: '🎬 Amante de las películas de ciencia ficción, especialmente "Guardianes de la Galaxia". 🎸 Me encanta la música rock y siempre llevo mi guitarra. 🍽️ Cocinero en mi tiempo libre, especialmente me gusta hacer lasaña. 🐶 Amante de los animales, especialmente de los perros. 🚀 Viajero en busca de nuevas aventuras. ¿Te unes a mí en esta búsqueda?',
         images: [
             'olivia/1.png',
@@ -173,7 +178,7 @@ const users =
         municipe: 'Vedado',
         genre: 'female',
         sexual_orientation: 'heterosexual',
-        position: [4111,1222],
+        position: [4111, 1222],
         profession: 'none'
     },
 
