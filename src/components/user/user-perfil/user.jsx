@@ -1,3 +1,4 @@
+import React from 'react';
 import users from '../../../data/users';
 import perfil from '../../../data/perfil';
 import { AgeCaculate } from '../utils/utils';
@@ -8,23 +9,16 @@ import Images from '../utils/imagesComponent/images.jsx';
 import defaulStyles from '../../../styles.jsx';
 import { appGradientColors } from '../../../styles.jsx'
 import { LinearGradient } from 'expo-linear-gradient';
+
 import { useDispatch } from 'react-redux';
+import { useFocusEffect } from '@react-navigation/native';
 import { setActive } from '../../../store/bottomBar/bottomBarSlice.jsx';
 
-// import { useDispatch } from 'react-redux';
-// import { useIsFocused } from '@react-navigation/native';
-// import { setActive } from '../../../store/bottomBar/bottomBarSlice.jsx';
-// import { useEffect } from 'react';
-
-
 function ExitButton({ navigation }) {
-    const dispatch = useDispatch();
     return (
         <TouchableOpacity
             onPress={() => {
                 navigation.goBack();
-                dispatch(setActive(true))
-
             }}
             style={[styles.exitButton, styles.boxShadow]}
         >
@@ -101,12 +95,16 @@ function Info({ user }) {
 function User({ route, navigation }) {
     const { userKey } = route.params
     const user = users[userKey];
-
-    // const dispatch = useDispatch()
-    // const isFocused = useIsFocused();
-    // useEffect(() => {
-    //     dispatch(setActive(true))
-    // }, [dispatch, isFocused]);
+    
+    const dispatch = useDispatch()
+      useFocusEffect(
+        React.useCallback(() => {
+            dispatch(setActive(false))
+          return () => {
+            dispatch(setActive(true))
+          };
+        }, [])
+      );
 
     return (
         <View style={defaulStyles.container}>

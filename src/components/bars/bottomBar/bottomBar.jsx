@@ -4,7 +4,9 @@ import { LinearGradient } from "expo-linear-gradient";
 import { appGradientColors } from '../../../styles.jsx'
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
-import { setScreen } from '../../../store/bottomBar/bottomBarSlice.jsx'
+
+// import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
+// const Tab = createBottomTabNavigator();
 
 function BottomBar() {
     const bottomBarStore = useSelector((state) => (state.bottomBar))
@@ -58,7 +60,6 @@ function HomeButton({ navigation }) {
     const dispatch = useDispatch();
     const bottomBarStore = useSelector((state) => (state.bottomBar))
     const onPress = () => {
-        dispatch(setScreen('home'));
         navigation.navigate('home')
     }
     const image = require('./icons/home.png');
@@ -91,7 +92,6 @@ function ReelsButton({ navigation }) {
     const dispatch = useDispatch();
     const bottomBarStore = useSelector((state) => (state.bottomBar))
     const onPress = () => {
-        dispatch(setScreen('reels'));
         navigation.navigate('reels');
 
     }

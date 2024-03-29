@@ -1,10 +1,11 @@
-import { View, Text, FlatList } from "react-native";
+import { View, FlatList } from "react-native";
 import users from "../../../data/users";
-import { useEffect, useRef, useState } from "react";
-import perfil from "../../../data/perfil";
-import BottomBar from "../../bars/bottomBar/bottomBar";
+import React, { useEffect, useRef, useState } from "react";
 import defaulStyles from "../../../styles";
 import UserReel from "../../user/user-reel/userReel";
+import { useDispatch } from "react-redux";
+import { setScreen } from "../../../store/bottomBar/bottomBarSlice";
+import { useFocusEffect } from "@react-navigation/native";
 
 function SwitchUser(y, deltaY, setIndexUser, indexUser, usersLenght) {
     if (y > deltaY && indexUser < usersLenght - 1) {
@@ -16,6 +17,12 @@ function SwitchUser(y, deltaY, setIndexUser, indexUser, usersLenght) {
 }
 
 function Reels({ navigation }) {
+    const dispatch = useDispatch()
+    useFocusEffect(
+        React.useCallback(() => {
+            dispatch(setScreen('reels'))
+        }, []))
+
     const usersView = []
     Object.values(users).forEach((user_, index) => {
         if (user_.nick != 'my_user')
@@ -35,6 +42,7 @@ function Reels({ navigation }) {
             ref.current.scrollToIndex({ index: indexUser, animated: true });
         }
     }, [indexUser]);
+
 
     return (
         <View style={defaulStyles.container}>

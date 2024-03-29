@@ -7,7 +7,6 @@ import FadePanel from '../../../utils/fadePanel.jsx'
 import { LinearGradient } from 'expo-linear-gradient';
 import Buttons from '../buttons/buttons.jsx';
 import { useDispatch } from 'react-redux';
-import { setActive } from '../../../../store/bottomBar/bottomBarSlice.jsx'
 
 function InfoButton({ navigation, user }) {
     const dispatch = useDispatch()
@@ -17,7 +16,6 @@ function InfoButton({ navigation, user }) {
                 navigation.navigate('user',
                     { userKey: user.nick }
                 );
-                dispatch(setActive(false))
             }}
             style={infoStyle.button}
         >
@@ -58,7 +56,7 @@ function Info({ user, navigation }) {
 
                         <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-end' }}>
                             <Text style={{ fontSize: 28, fontWeight: '500', color: 'white' }}>
-                                {`${user.name} ${user.last_name} `}
+                                {`${user.name} `}
                             </Text>
                             <Text style={{ fontSize: 23, fontWeight: '300', color: 'white' }}>
                                 {`${AgeCaculate(user)}`}
@@ -83,10 +81,11 @@ function Info({ user, navigation }) {
                         <Text style={styles().text}>{`${user.sexual_orientation}`}</Text>
                     </View>
 
-                    <View style={infoStyle.infoRow}>
-                        <Image style={infoStyle.infoRowImage} source={require('./icons/profession.png')} />
-                        <Text style={styles().text}>{`${user.profession}`}</Text>
-                    </View>
+                    {user.profession != 'none' &&
+                        <View style={infoStyle.infoRow}>
+                            <Image style={infoStyle.infoRowImage} source={require('./icons/profession.png')} />
+                            <Text style={styles().text}>{`${user.profession}`}</Text>
+                        </View>}
 
                     <View style={infoStyle.infoRow}>
                         <Image style={infoStyle.infoRowImage} source={require('./icons/location.png')} />
