@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
         borderRadius: 10,
         marginVertical: 5,
         marginHorizontal: 0,
-        backgroundColor: 'rgba(255,255,255,0.05)',
+        backgroundColor: 'rgba(255,255,255,0.02)',
         borderRadius: 10,
         width: '100%',
     },
