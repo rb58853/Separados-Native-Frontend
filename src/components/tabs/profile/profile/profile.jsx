@@ -1,14 +1,14 @@
 import { Text, View, Image, ScrollView, TouchableOpacity } from 'react-native';
-import users from "../../../data/users"
-import env from "../../../environment/environment"
+import users from "../../../../data/users"
+import env from "../../../../environment/environment"
 import { useDispatch } from 'react-redux';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { setScreen } from '../../../store/bottomBar/bottomBarSlice';
+import { setScreen } from '../../../../store/bottomBar/bottomBarSlice';
 import { styles } from './style';
-import { AgeCaculate } from '../../user/utils/utils';
+import { AgeCaculate } from '../../../user/utils/utils';
 import { LinearGradient } from 'expo-linear-gradient';
-import { appGradientColors } from '../../../styles';
+import { appGradientColors } from '../../../../styles';
 
 const profile = users[env['profile']]
 function Profile() {
@@ -197,7 +197,7 @@ function SeeButton() {
                 navigation.navigate('user',
                     {
                         userKey: profile.nick,
-                        buttons: false,
+                        activeButtons: false,
                     }
                 );
             }}

@@ -20,19 +20,24 @@ function ExitButton({ navigation }) {
             onPress={() => {
                 navigation.goBack();
             }}
-            style={[styles.exitButton, styles.boxShadow]}
+            style={styles.exitButton}
         >
-            <Image
-                style={styles.exitButtonImage}
-                source={require('./icons/back.png')}
-            />
+            <LinearGradient
+                style = {styles.exitButtonBackground}
+                colors={appGradientColors.standart}
+            >
+                <Image
+                    style={styles.exitButtonImage}
+                    source={require('./icons/back.png')}
+                />
+            </LinearGradient>
         </TouchableOpacity>
     )
 }
 
 function Tags({ user }) {
     const tags = []
-    user.tags.forEach((tag) => {
+    user.tags.forEach((tag, index) => {
         if (users[env['profile']].tags.includes(tag)) {
             tags.push(
                 <LinearGradient

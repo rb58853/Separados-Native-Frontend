@@ -81,12 +81,16 @@ export const styles = StyleSheet.create({
         height: 35,
         width: 35,
         zIndex: 2,
+        borderRadius: 50,
+    },
+    exitButtonBackground:{
+        height: 35,
+        width: 35,
+        borderRadius: 50,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 50,
     },
-
     exitButtonImage: {
         height: '60%',
         width: '60%',

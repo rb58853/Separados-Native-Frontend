@@ -76,7 +76,8 @@ function ProfileButton({ navigation }) {
     const bottomBarStore = useSelector((state) => (state.bottomBar))
     const image = require('./icons/profile.png');
     const onPress = () => {
-        navigation.navigate('profile')
+        if (bottomBarStore.screen != 'profile')
+            navigation.navigate('profile')
     }
 
     return <Button active={bottomBarStore.screen == 'profile'} image={image} onPress={onPress} />

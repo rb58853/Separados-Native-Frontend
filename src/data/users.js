@@ -39,7 +39,7 @@ const users =
         name: "Anna",
         last_name: "Johns",
         email: "user@email.com",
-        profilePhoto: 'light/perfil.png',
+        profilePhoto: 'anna/profile.jpg',
         short_bibliografy: 'ShortBibliografy',
         bibliografy: '🎬 Amante de las películas de ciencia ficción, especialmente "Guardianes de la Galaxia". 🎸 Me encanta la música rock y siempre llevo mi guitarra. 🍽️ Cocinero en mi tiempo libre, especialmente me gusta hacer lasaña. 🐶 Amante de los animales, especialmente de los perros. 🚀 Viajero en busca de nuevas aventuras. ¿Te unes a mí en esta búsqueda?',
         images: [
@@ -64,7 +64,7 @@ const users =
         name: "Sofia",
         last_name: "Moreno",
         email: "user@email.com",
-        profilePhoto: 'light/perfil.png',
+        profilePhoto: 'sofia/profile.jpg',
         short_bibliografy: 'ShortBibliografy',
         bibliografy: '🎬 Amante de las películas de ciencia ficción, especialmente "Guardianes de la Galaxia". 🎸 Me encanta la música rock y siempre llevo mi guitarra. 🍽️ Cocinero en mi tiempo libre, especialmente me gusta hacer lasaña. 🐶 Amante de los animales, especialmente de los perros. 🚀 Viajero en busca de nuevas aventuras. ¿Te unes a mí en esta búsqueda?',
         images: [
@@ -93,7 +93,7 @@ const users =
         name: "Jashlem",
         last_name: "Moreno",
         email: "user@email.com",
-        profilePhoto: 'light/perfil.png',
+        profilePhoto: 'jashlem/profile.jpg',
         short_bibliografy: 'ShortBibliografy',
         bibliografy: '🎬 Amante de las películas de ciencia ficción, especialmente "Guardianes de la Galaxia". 🎸 Me encanta la música rock y siempre llevo mi guitarra. 🍽️ Cocinero en mi tiempo libre, especialmente me gusta hacer lasaña. 🐶 Amante de los animales, especialmente de los perros. 🚀 Viajero en busca de nuevas aventuras. ¿Te unes a mí en esta búsqueda?',
         images: [
@@ -120,7 +120,7 @@ const users =
         name: "Mia",
         last_name: "Wang",
         email: "user@email.com",
-        profilePhoto: 'light/perfil.png',
+        profilePhoto: 'mia/profile.jpg',
         short_bibliografy: 'ShortBibliografy',
         bibliografy: '🎬 Amante de las películas de ciencia ficción, especialmente "Guardianes de la Galaxia". 🎸 Me encanta la música rock y siempre llevo mi guitarra. 🍽️ Cocinero en mi tiempo libre, especialmente me gusta hacer lasaña. 🐶 Amante de los animales, especialmente de los perros. 🚀 Viajero en busca de nuevas aventuras. ¿Te unes a mí en esta búsqueda?',
         images: [
@@ -166,7 +166,7 @@ const users =
         name: "Olivia",
         last_name: "Perez",
         email: "user@email.com",
-        profilePhoto: 'light/perfil.png',
+        profilePhoto: 'olivia/profile.jpg',
         short_bibliografy: 'ShortBibliografy',
         bibliografy: '🎬 Amante de las películas de ciencia ficción, especialmente "Guardianes de la Galaxia". 🎸 Me encanta la música rock y siempre llevo mi guitarra. 🍽️ Cocinero en mi tiempo libre, especialmente me gusta hacer lasaña. 🐶 Amante de los animales, especialmente de los perros. 🚀 Viajero en busca de nuevas aventuras. ¿Te unes a mí en esta búsqueda?',
         images: [
