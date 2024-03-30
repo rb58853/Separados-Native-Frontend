@@ -34,6 +34,7 @@ function DefaulHome({ navigation }) {
                 renderItem={renderItem}
                 style={{ backgroundColor: 'rgba(15,15,20,1)' }}
                 contentContainerStyle={{ gap: 3 }}
+                showsVerticalScrollIndicator={false}
             />
         </View>
     )

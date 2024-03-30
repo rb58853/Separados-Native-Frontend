@@ -22,7 +22,9 @@ function Profile() {
 
     return (
         <View style={styles.full}>
-            <ScrollView style={styles.profile}>
+            <ScrollView style={styles.profile}
+                showsVerticalScrollIndicator={false}
+            >
                 <View style={styles.rowProfile}>
                     <Image
                         style={styles.profilePhoto}

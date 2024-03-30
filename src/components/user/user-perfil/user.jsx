@@ -112,7 +112,9 @@ function User({ route, navigation }) {
                 {/* <Text style={{ color: 'black', fontSize: 25 }}> {userKey}</Text> */}
                 <View style={styles.line} />
                 <ExitButton navigation={navigation} />
-                <ScrollView style={styles.scrollView}>
+                <ScrollView style={styles.scrollView}
+                    showsVerticalScrollIndicator={false}
+                >
                     <View style={styles.boxImageHeader}>
                         <Text style={styles.myHeader1}>{`${user.name}, ${AgeCaculate(user)}`}</Text>
                         <Images user={user} />

@@ -55,6 +55,7 @@ function Reels({ navigation }) {
                 renderItem={renderItem}
                 style={{ backgroundColor: 'rgba(15,15,20,1)' }}
                 contentContainerStyle={{ gap: 3 }}
+                showsVerticalScrollIndicator={false}
                 // showsHorizontalScrollIndicator={false}
 
                 onScrollBeginDrag={(e) => { setDeltaY(e.nativeEvent.contentOffset.y) }}

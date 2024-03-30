@@ -32,7 +32,7 @@ function TopBar() {
                 </LinearGradient>
 
                 <View style={styles.buttons}>
-                    <Button image={require('./icons/activeNotification2.png')}/>
+                    <Button image={require('./icons/notification.png')}/>
                     <Button image={require('./icons/adjusts.png')}/>
                 </View>
             </View>
