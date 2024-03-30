@@ -1,11 +1,11 @@
-import { View, Image, Pressable } from "react-native";
+import { View, Image, Pressable, TouchableOpacity } from "react-native";
 import { styles } from './styles.jsx'
 import { LinearGradient } from "expo-linear-gradient";
 import { appGradientColors } from "../../../styles.jsx";
 
 function Button({ image, onPress }) {
     return (
-        <Pressable
+        <TouchableOpacity
             onPress={onPress}
             style={styles.button}
         >
@@ -13,7 +13,7 @@ function Button({ image, onPress }) {
                 style={styles.buttonImage}
                 source={image}
             />
-        </Pressable>
+        </TouchableOpacity>
     )
 };
 
@@ -32,7 +32,8 @@ function TopBar() {
                 </LinearGradient>
 
                 <View style={styles.buttons}>
-                    <Button image={require('./icons/menu.png')}/>
+                    <Button image={require('./icons/activeNotification2.png')}/>
+                    <Button image={require('./icons/adjusts.png')}/>
                 </View>
             </View>
             <View style={styles.line} />

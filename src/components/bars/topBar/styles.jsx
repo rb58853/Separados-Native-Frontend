@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
         height: 50,
         display: 'flex',
         flexDirection: 'column',
+        // backgroundColor:'blue',
     },
     content: {
         flexGrow: 1,
@@ -42,12 +43,13 @@ export const styles = StyleSheet.create({
     },
     button: {
         // backgroundColor: 'white',
-        height: '70%',
+        height: '55%',
         aspectRatio: 9 / 9,
     },
     buttonImage:{
         height:"100%",
         width:'100%',
+        opacity:0.9,
         // backgroundColor:'blue',
     }
 });

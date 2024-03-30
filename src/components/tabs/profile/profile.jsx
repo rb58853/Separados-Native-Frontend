@@ -2,7 +2,7 @@ import { Text, View, Image, ScrollView, TouchableOpacity } from 'react-native';
 import users from "../../../data/users"
 import env from "../../../environment/environment"
 import { useDispatch } from 'react-redux';
-import { useFocusEffect } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { setScreen } from '../../../store/bottomBar/bottomBarSlice';
 import { styles } from './style';
@@ -18,10 +18,7 @@ function Profile() {
             dispatch(setScreen('profile'))
         }, []))
 
-    const images = profile.images.map((path) => {
-        // return <Text>{path}</Text>
-        return <ShortImage path={path} />
-    })
+    const images = ShortImagesList()
 
     return (
         <View style={styles.full}>
@@ -39,7 +36,10 @@ function Profile() {
                             {`${profile.short_bibliografy}`}
                         </Text>
                     </View>
+
+                    <SeeButton />
                 </View>
+
                 {/* <View style={styles.line} /> */}
 
                 <PersonalInfo />
@@ -74,6 +74,22 @@ function Profile() {
     )
 }
 
+function ShortImagesList() {
+    const images = profile.images.map((path) => {
+        // return <Text>{path}</Text>
+        return <ShortImage path={path} />
+    })
+    images.push(
+        <TouchableOpacity style={styles.addImage}>
+            <Image style={styles.addImageImage}
+                source={require('./icons/addImage.png')}
+            />
+        </TouchableOpacity>
+
+    )
+
+    return images
+}
 function ShortImage({ path }) {
     const fullPath = env['usersImagesRoot'] + path
     return (
@@ -87,7 +103,7 @@ function ShortImage({ path }) {
 }
 
 function Tags() {
-    return <EditableTags />
+    return <NormalTags />
 }
 
 function NormalTags() {
@@ -171,5 +187,26 @@ function DeleteTagButton() {
         </TouchableOpacity>
     )
 };
+function SeeButton() {
+    const navigation = useNavigation()
+    return (
+        <TouchableOpacity
+            onPress={() => {
+                navigation.navigate('user',
+                    {
+                        userKey: profile.nick,
+                        buttons: false,
+                    }
+                );
+            }}
+            style={{ height: 40, aspectRatio: 1 / 1, marginLeft: 'auto' }}
+        >
+            <Image
+                style={styles.image}
+                source={require('./icons/see.png')}
+            />
+        </TouchableOpacity>
+    )
+}
 
 export default Profile

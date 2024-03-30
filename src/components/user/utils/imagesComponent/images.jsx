@@ -14,7 +14,10 @@ function InfoButton({ navigation, user }) {
         <TouchableOpacity
             onPress={() => {
                 navigation.navigate('user',
-                    { userKey: user.nick }
+                    {
+                        userKey: user.nick,
+                        activeButtons: true,
+                    }
                 );
             }}
             style={infoStyle.button}

@@ -5,7 +5,7 @@ const users =
         name: "Clara",
         last_name: "Galle",
         email: "user@email.com",
-        profilePhoto: 'light/perfil.png',
+        profilePhoto: 'clara/profile.jpg',
         short_bibliografy: 'ShortBibliografy',
         bibliografy: '🎬 Amante de las películas de ciencia ficción, especialmente "Guardianes de la Galaxia". 🎸 Me encanta la música rock y siempre llevo mi guitarra. 🍽️ Cocinero en mi tiempo libre, especialmente me gusta hacer lasaña. 🐶 Amante de los animales, especialmente de los perros. 🚀 Viajero en busca de nuevas aventuras. ¿Te unes a mí en esta búsqueda?',
         images: [
@@ -147,10 +147,10 @@ const users =
         short_bibliografy: 'Computer Scientist',
         bibliografy: '🎬 Amante de las películas de ciencia ficción, especialmente "Guardianes de la Galaxia". 🎸 Me encanta la música rock y siempre llevo mi guitarra. 🍽️ Cocinero en mi tiempo libre, especialmente me gusta hacer lasaña. 🐶 Amante de los animales, especialmente de los perros. 🚀 Viajero en busca de nuevas aventuras. ¿Te unes a mí en esta búsqueda?',
         images: [
-            'raul/1.jpg',
+            'raul/2.jpg',
         ],
         height: "193",
-        weight: "86",
+        weight: "88",
         date_born: "17/5/1999",
         tags: ['animales', 'gatos', 'programacion', 'literatura', 'perros', 'sabina', 'deportes'],
         city: 'Habana',

@@ -52,9 +52,11 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         height: 60,
         alignItems: 'center',
+        // justifyContent:'space-between',
         gap: 10,
         marginTop: 5,
         marginBottom: 5,
+        // backgroundColor: 'gray'
     },
 
     nameSpace: {
@@ -86,14 +88,30 @@ export const styles = StyleSheet.create({
     },
     shortImage: {
         width: "32.415%",
-        // width: 100,
         aspectRatio: 2 / 3,
-        height: 150,
     },
     image: {
         height: '100%',
         width: '100%',
         borderRadius: 2,
+    },
+
+    addImage: {
+        width: "32.415%",
+        aspectRatio: 2 / 3,
+        borderRadius: 5,
+        backgroundColor: 'rgba(255,255,255,0.04)',
+        // backgroundColor: 'rgba(0,255,100,0.04)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderWidth: 4,
+        borderColor: 'rgba(255,255,255,1)',
+        opacity:0.8,
+    },
+    addImageImage: {
+        height: '60%',
+        width: '60%',
     },
     tagsSpace: {
         display: 'flex',
@@ -136,9 +154,9 @@ export const styles = StyleSheet.create({
         height: 26,
         display: 'flex',
         flexDirection: 'row',
-        alignItems:'center',
-        justifyContent:'center',
-        aspectRatio: 1/1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        aspectRatio: 1 / 1,
     },
     plusImage: {
         height: '70%',

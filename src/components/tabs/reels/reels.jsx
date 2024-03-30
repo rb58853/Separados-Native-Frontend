@@ -6,12 +6,13 @@ import UserReel from "../../user/user-reel/userReel";
 import { useDispatch } from "react-redux";
 import { setScreen } from "../../../store/bottomBar/bottomBarSlice";
 import { useFocusEffect } from "@react-navigation/native";
+import env from "../../../environment/environment";
 
 function SwitchUser(y, deltaY, setIndexUser, indexUser, usersLenght) {
     if (y > deltaY && indexUser < usersLenght - 1) {
         setIndexUser(indexUser + 1)
     }
-    if (y < deltaY && indexUser>0) {
+    if (y < deltaY && indexUser > 0) {
         setIndexUser(indexUser - 1)
     }
 }
@@ -25,7 +26,7 @@ function Reels({ navigation }) {
 
     const usersView = []
     Object.values(users).forEach((user_, index) => {
-        if (user_.nick != 'my_user')
+        if (user_.nick != env['profile'])
             usersView.push({ id: index, user: user_.nick })
     })
 

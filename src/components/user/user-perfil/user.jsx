@@ -93,18 +93,18 @@ function Info({ user }) {
 }
 
 function User({ route, navigation }) {
-    const { userKey } = route.params
+    const { userKey, activeButtons } = route.params
     const user = users[userKey];
-    
+
     const dispatch = useDispatch()
-      useFocusEffect(
+    useFocusEffect(
         React.useCallback(() => {
             dispatch(setActive(false))
-          return () => {
-            dispatch(setActive(true))
-          };
+            return () => {
+                dispatch(setActive(true))
+            };
         }, [])
-      );
+    );
 
     return (
         <View style={defaulStyles.container}>
@@ -118,9 +118,9 @@ function User({ route, navigation }) {
                         <Images user={user} />
                     </View>
                     <Info user={user} />
-                    <View style={styles.spaceToButtons} />
+                    {activeButtons && <View style={styles.spaceToButtons} />}
                 </ScrollView>
-                <Buttons fast={false} />
+                {activeButtons && <Buttons fast={false} />}
             </View >
         </View>
     )
