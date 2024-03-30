@@ -4,7 +4,7 @@ import env from "../../../../environment/environment"
 import { useDispatch } from 'react-redux';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { setScreen } from '../../../../store/bottomBar/bottomBarSlice';
+import { setActive, setScreen } from '../../../../store/bottomBar/bottomBarSlice';
 import { styles } from './style';
 import { AgeCaculate } from '../../../user/utils/utils';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -16,6 +16,7 @@ function Profile() {
     useFocusEffect(
         React.useCallback(() => {
             dispatch(setScreen('profile'))
+            dispatch(setActive(true))
         }, []))
 
     const images = ShortImagesList()

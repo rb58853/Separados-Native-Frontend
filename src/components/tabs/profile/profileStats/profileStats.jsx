@@ -3,14 +3,26 @@ import { styles } from "./styles"
 import env from "../../../../environment/environment"
 import dynamicUsers from "../../../../data/usersRealTime"
 import users from "../../../../data/users"
-import { useNavigation } from "@react-navigation/native"
+import { useFocusEffect, useNavigation } from "@react-navigation/native"
+import { CustomTopBar, TopBarButton } from "../../../bars/topBar/topBar"
+import { useDispatch } from "react-redux"
+import React from "react"
+import { setActive } from "../../../../store/bottomBar/bottomBarSlice"
 
 const profile = users[env['profile']]
 
 function ProfileStats() {
+    const dispatch = useDispatch()
+    useFocusEffect(
+        React.useCallback(() => {
+            dispatch(setActive(false))
+        }, [])
+    );
+
     return (
         <View style={styles.full}>
-            <ScrollView style={styles.profileStats}>
+            <CustomTopBar buttons={[<BackButton />]} />
+            <ScrollView style={[styles.profileStats, {marginBottom: 10}]}>
                 <SuperLikesTo />
                 <LikesTo />
                 <BlocksTo />
@@ -34,21 +46,21 @@ function SuperLikesTo() {
     const superLikesTo = dynamicUsers[env['profile']].superLikesTo.map((id) => {
         return <ToUserButton user={users[id]} />
     })
-    return <BoxUsers userList={superLikesTo} style={styles.superLikesBox} headerText={'Mis super likes'} />
+    return <BoxUsers userList={superLikesTo} style={styles.superLikesBox} headerText={'Mis super likes 🔷'} />
 }
 
 function LikesTo() {
     const likesTo = dynamicUsers[env['profile']].likesTo.map((id) => {
         return <ToUserButton user={users[id]} />
     })
-    return <BoxUsers userList={likesTo} style={styles.likesBox} headerText={'Mis likes'} />
+    return <BoxUsers userList={likesTo} style={styles.likesBox} headerText={'Mis likes 💚'} />
 }
 
 function BlocksTo() {
     const blocksTo = dynamicUsers[env['profile']].blocksTo.map((id) => {
         return <ToUserButton user={users[id]} />
     })
-    return <BoxUsers userList={blocksTo} style={styles.blocksBox} headerText={'Mis Bloqueados'} />
+    return <BoxUsers userList={blocksTo} style={styles.blocksBox} headerText={'Mis Bloqueados 🚫'} />
 }
 
 function ToUserButton({ user }) {
@@ -72,4 +84,13 @@ function ToUserButton({ user }) {
         </TouchableOpacity>
     )
 }
+
+function BackButton() {
+    const image = require('./icons/back.png')
+    const navigation = useNavigation();
+
+    const onPress = () => { navigation.goBack(); }
+    return <TopBarButton image={image} onPress={onPress} />
+}
+
 export default ProfileStats

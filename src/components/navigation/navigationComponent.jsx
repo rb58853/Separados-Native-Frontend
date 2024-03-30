@@ -61,10 +61,7 @@ function NavigationContent() {
                 <Stack.Screen
                     name="profileStats"
                     component={ProfileStats}
-                    options={{
-                        header: (props) => <TopBar {...props} />,
-                        headerShown: 'float',
-                    }}
+                    options={{ headerShown: false }}
                 />
 
                 <Stack.Screen

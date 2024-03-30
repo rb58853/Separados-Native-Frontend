@@ -3,14 +3,24 @@ import { styles } from "./styles"
 import env from "../../../../environment/environment"
 import dynamicUsers from "../../../../data/usersRealTime"
 import users from "../../../../data/users"
-import { useNavigation } from "@react-navigation/native"
+import { useFocusEffect, useNavigation } from "@react-navigation/native"
 import TopBar, { CustomTopBar, TopBarButton } from "../../../bars/topBar/topBar"
 import { LinearGradient } from "expo-linear-gradient"
 import { appGradientColors } from "../../../../styles"
+import { useDispatch } from "react-redux"
+import React from "react"
+import { setActive } from "../../../../store/bottomBar/bottomBarSlice"
 
 const profile = users[env['profile']]
 
 function Favorites() {
+    const dispatch = useDispatch()
+    useFocusEffect(
+        React.useCallback(() => {
+            dispatch(setActive(false))
+        }, [])
+    );
+
     return (
         <View style={styles.full}>
             <Bar />
@@ -80,11 +90,7 @@ function ExpandButton() {
     const onPress = () => { }
     return <TopBarButton image={image} onPress={onPress} />
 }
-function BackButton() {
-    const image = require('./icons/back.png')
-    const onPress = () => { }
-    return <TopBarButton image={image} onPress={onPress} />
-}
+
 
 function ExitButton() {
     const navigation = useNavigation();
