@@ -154,6 +154,9 @@ function Images({ user, mode = 'default', navigation }) {
                     }
                     setHideTimer(setTimeout(() => { setIsHide(true) }, 1000));
                 }}
+                pagingEnabled
+
+                onViewableItemsChanged={({ viewableItems, changed }) => { }}
             />
             {mode == 'fast' && <Info user={user} navigation={navigation} />}
         </View>

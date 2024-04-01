@@ -12,6 +12,7 @@ import { useEffect } from 'react';
 import Profile from '../tabs/profile/profile/profile.jsx';
 import ProfileStats from '../tabs/profile/profileStats/profileStats.jsx';
 import Favorites from '../tabs/profile/favorites/favorites.jsx';
+import ReelsNew from '../tabs/reels/reelsNew.jsx';
 
 
 const Stack = createNativeStackNavigator();

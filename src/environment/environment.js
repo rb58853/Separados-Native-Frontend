@@ -6,4 +6,5 @@ const env = {
 
 export const mode = env['mode']
 export const usersImagesRoot = env['usersImagesRoot']
+export const bottomBarHeight = 50
 export default env

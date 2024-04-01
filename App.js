@@ -11,14 +11,14 @@ export default function App() {
 
 
   return (
-    <View style={styles.full}>
-      <View style={styles.statusBar} />
-      <Provider store={store}>
-        <View style={styles.app}>
-          <NavigationContent />
-        </View>
-      </Provider>
-    </View>
+      <View style={styles.full}>
+        <View style={styles.statusBar} />
+        <Provider store={store}>
+          <View style={styles.app}>
+            <NavigationContent />
+          </View>
+        </Provider>
+      </View>
   );
 }
 

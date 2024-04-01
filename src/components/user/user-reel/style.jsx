@@ -1,4 +1,10 @@
 import { StyleSheet } from 'react-native';
+import Constants from 'expo-constants';
+import { bottomBarHeight } from '../../../environment/environment.js';
+import { Dimensions} from 'react-native';
+
+// export const reelHeight = Dimensions.get('window').height - bottomBarHeight;
+export const reelHeight = 787;
 
 export const styles = StyleSheet.create({
     boxSpace: {
@@ -23,12 +29,12 @@ export const styles = StyleSheet.create({
         flexDirection: 'column',
         placeContent: 'center',
         width: '100%',
-        height: 800,
-        // backgroundColor:'white',
+        // height: 800,
+        height: reelHeight,
     },
     line: {
         backgroundColor: 'rgba(255,255,255,0.2)',
         height: 1,
-        marginTop:10,
+        marginTop: 10,
     },
 });

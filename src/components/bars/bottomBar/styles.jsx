@@ -1,9 +1,10 @@
 import { StyleSheet } from 'react-native';
+import { bottomBarHeight } from '../../../environment/environment';
 
 export const styles = StyleSheet.create({
     bottomBar: {
         width: '100%',
-        height: 50,
+        height: bottomBarHeight,
         display: 'flex',
         flexDirection: 'column',
         zIndex: 2,
