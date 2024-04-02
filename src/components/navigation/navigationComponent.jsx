@@ -46,7 +46,7 @@ function NavigationContent() {
 
                 <Stack.Screen
                     name="reels"
-                    component={Reels}
+                    component={ReelsNew}
                     options={{ headerShown: false }}
                 />
 
