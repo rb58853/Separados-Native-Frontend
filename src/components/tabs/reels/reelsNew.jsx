@@ -94,11 +94,11 @@ function PrincipalUser({ usersView }) {
                     {indexUser > 0 && usersView[indexUser - 1]}
                 </View>
 
-                <View style={{ zIndex: 10, position: 'absolute', top: heightSpace, opacity: opacity }}>
+                <View style={{ zIndex: 1, position: 'absolute', top: heightSpace, opacity: opacity }}>
                     {usersView[indexUser]}
                 </View>
 
-                <View style={[{ zIndex: 10, position: 'absolute', bottom: 0, opacity: 1-opacity }, scrollPositionY <= 200 ? { display: 'none' } : {}]}>
+                <View style={[{ zIndex: 10, position: 'absolute', bottom: 0, opacity: 1 - opacity }, scrollPositionY <= 200 ? { display: 'none' } : {}]}>
                     {indexUser < usersView.length && usersView[indexUser + 1]}
                 </View>
 
