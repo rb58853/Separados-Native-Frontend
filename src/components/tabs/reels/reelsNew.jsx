@@ -18,21 +18,13 @@ function ReelsNew({ navigation }) {
         }, []))
 
     const usersView = []
+    const count = 1000    
 
     Object.values(users).forEach((user, index) => {
         if (user.nick != env['profile'])
             usersView.push(<UserReel navigation={navigation} userKey={user.nick} key={index} />)
     })
 
-    Object.values(users).forEach((user, index) => {
-        if (user.nick != env['profile'])
-            usersView.push(<UserReel navigation={navigation} userKey={user.nick} key={index} />)
-    })
-
-    Object.values(users).forEach((user, index) => {
-        if (user.nick != env['profile'])
-            usersView.push(<UserReel navigation={navigation} userKey={user.nick} key={index} />)
-    })
 
     return (
         <View style={{ position: 'relative' }}>
@@ -60,18 +52,24 @@ function PrincipalUser({ usersView }) {
 
     const ref = useRef();
 
+    useEffect(() => {
+        setOpacity(1)
+    }, [indexUser])
+
     useLayoutEffect(() => {
         setOpacity(1)
-        // setIndexView(usersView[indexUser])
-        // if (indexUser > 0)
-        //     setPreIndexView(usersView[indexUser - 1])
-        // else
-        //     setPreIndexView(null)
+        ref.current.scrollTo({ y: heightSpace, animated: false })
 
-        // if (indexUser < usersView.length)
-        //     setPostIndexView(usersView[indexUser + 1])
-        // else
-        //     setPostIndexView(null)
+    //     // setIndexView(usersView[indexUser])
+    //     // if (indexUser > 0)
+    //     //     setPreIndexView(usersView[indexUser - 1])
+    //     // else
+    //     //     setPreIndexView(null)
+
+    //     // if (indexUser < usersView.length)
+    //     //     setPostIndexView(usersView[indexUser + 1])
+    //     // else
+    //     //     setPostIndexView(null)
 
     }, [indexUser])
 
@@ -85,22 +83,18 @@ function PrincipalUser({ usersView }) {
             <ScrollView
                 ref={ref}
                 style={{ backgroundColor: 'rgba(15,15,20,1)' }}
-                onScrollBeginDrag={(e) => { setDeltaY(e.nativeEvent.contentOffset.y) }}
-                // showsVerticalScrollIndicator={false}
+                
+                showsVerticalScrollIndicator={false}
 
-                onScrollEndDrag={(e) => {
-                    // SwitchView(e.nativeEvent.contentOffset.y, indexUser, usersView.length, ref)
-                }}
                 onMomentumScrollEnd={(e) => {
-                    // SwitchUser(e.nativeEvent.contentOffset.y, setIndexUser, indexUser, usersView.length, ref)
+                    SwitchUser(e.nativeEvent.contentOffset.y, setIndexUser, indexUser, usersView.length)
                     setWasScroll(!wasScroll)
                 }}
+
                 onScroll={(e) => {
-                    DynamicSwitchUser(e.nativeEvent.contentOffset.y, setIndexUser, indexUser, usersView.length, ref)
+                    // DynamicSwitchUser(e.nativeEvent.contentOffset.y, setIndexUser, indexUser, usersView.length, ref)
                     onScrollHandler(e.nativeEvent.contentOffset.y, setOpacity, heightSpace)
                     setScrollPositionY(e.nativeEvent.contentOffset.y)
-                }}
-                onScrollToTop={(e)=>{
                 }}
             >
 
@@ -111,10 +105,10 @@ function PrincipalUser({ usersView }) {
                 <View style={
                     [
                         {
-                            zIndex: 1,
+                            zIndex: 0,
                             position: 'absolute',
                             top: 0,
-                            opacity: 1 - opacity
+                           opacity: 1 - opacity
                         },
 
                         scrollPositionY == heightSpace ? { top: heightSpace } :
@@ -125,27 +119,24 @@ function PrincipalUser({ usersView }) {
                 }
                 >
                     {indexUser > 0 && usersView[indexUser - 1]}
-                    {/* {preIndexView} */}
                 </View>
 
 
                 <View style={
                     {
-                        zIndex: 0,
+                        zIndex: 1,
                         position: 'absolute',
                         top: heightSpace,
-                        // opacity: 1
                         opacity: opacity
                     }}
                 >
                     {usersView[indexUser]}
-                    {/* {indexView} */}
                 </View>
 
                 <View style={
                     [
                         {
-                            zIndex: 1,
+                            zIndex: 0,
                             position: 'absolute',
                             bottom: 0,
                             opacity: 1 - opacity
@@ -159,7 +150,6 @@ function PrincipalUser({ usersView }) {
                 }
                 >
                     {indexUser < usersView.length && usersView[indexUser + 1]}
-                    {/* {postIndexView} */}
                 </View>
 
                 <View style={{ height: heightSpace }} />

@@ -15,11 +15,10 @@ function Reels({ navigation }) {
             dispatch(setScreen('reels'))
         }, []))
 
-    let count = 0;
-    const usersView = []
+    const usersView = []    
     Object.values(users).forEach((user_, index) => {
         if (user_.nick != env['profile'])
-            usersView.push({ id: + index, user: user_.nick })
+            usersView.push({ id: index, user: user_.nick })
     })
 
     const renderItem = ({ item }) => (
@@ -29,10 +28,10 @@ function Reels({ navigation }) {
     const [indexUser, setIndexUser] = useState(0)
 
     const ref = useRef()
-    
+
     return (
         <View style={defaulStyles.container}>
-           
+
             <FlatList
                 ref={ref}
                 data={usersView}
@@ -43,11 +42,11 @@ function Reels({ navigation }) {
                 contentContainerStyle={{ gap: 3 }}
                 showsVerticalScrollIndicator={false}
 
-                getItemLayout={(_data, index) => ({
-                    length: reelHeight,
-                    offset: reelHeight * index,
-                    index,
-                })}
+                // getItemLayout={(_data, index) => ({
+                //     length: reelHeight,
+                //     offset: reelHeight * index,
+                //     index,
+                // })}
 
                 // decelerationRate='slow'
                 pagingEnabled
