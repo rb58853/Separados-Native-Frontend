@@ -15,7 +15,7 @@ function InfoButton({ navigation, user }) {
             onPress={() => {
                 navigation.navigate('user',
                     {
-                        userKey: user.nick,
+                        userKey: user.id,
                         activeButtons: true,
                     }
                 );

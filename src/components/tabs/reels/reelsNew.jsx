@@ -8,6 +8,7 @@ import { setScreen } from "../../../store/bottomBar/bottomBarSlice";
 import { useFocusEffect } from "@react-navigation/native";
 import env from "../../../environment/environment";
 import { reelHeight } from "../../user/user-reel/style";
+import { GetAllUsersInformation } from "../../../api/information";
 
 
 function ReelsNew({ navigation }) {
@@ -19,12 +20,12 @@ function ReelsNew({ navigation }) {
 
     const usersView = []
     const count = 1000    
+    const getUsers = GetAllUsersInformation()
 
-    Object.values(users).forEach((user, index) => {
-        if (user.nick != env['profile'])
-            usersView.push(<UserReel navigation={navigation} userKey={user.nick} key={index} />)
+    Object.values(getUsers).forEach((user, index) => {
+        if (user.id != env['profile'])
+            usersView.push(<UserReel navigation={navigation} userKey={user.id} key={index} />)
     })
-
 
     return (
         <View style={{ position: 'relative' }}>
@@ -47,8 +48,6 @@ function PrincipalUser({ usersView }) {
     const [indexView, setIndexView] = useState(usersView[indexUser])
     const [preIndexView, setPreIndexView] = useState(indexUser > 0 ? usersView[indexUser - 1] : null)
     const [postIndexView, setPostIndexView] = useState(indexUser < usersView.length ? usersView[indexUser + 1] : null)
-
-    const [secundaryDisplay, setSecundaryDisplay] = useState('flex')
 
     const ref = useRef();
 

@@ -9,6 +9,12 @@ import env from "../../../environment/environment";
 import { GetAllUsersInformation } from "../../../api/information";
 
 function DefaulHome({ navigation }) {
+    const dispatch = useDispatch()
+    useFocusEffect(
+        React.useCallback(() => {
+            dispatch(setScreen('home'))
+        }, []))
+
     const usersView = []
     const getUsers = GetAllUsersInformation()
 
@@ -20,12 +26,6 @@ function DefaulHome({ navigation }) {
     const renderItem = ({ item }) => (
         <UserFast navigation={navigation} userKey={item.user} />
     );
-
-    const dispatch = useDispatch()
-    useFocusEffect(
-        React.useCallback(() => {
-            dispatch(setScreen('home'))
-        }, []))
 
     return (
         <View style={defaulStyles.container}>

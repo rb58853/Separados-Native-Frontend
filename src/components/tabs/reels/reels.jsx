@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { setScreen } from "../../../store/bottomBar/bottomBarSlice";
 import { useFocusEffect } from "@react-navigation/native";
 import env, { bottomBarHeight } from "../../../environment/environment";
+import { GetAllUsersInformation } from "../../../api/information";
 
 function Reels({ navigation }) {
     const dispatch = useDispatch()
@@ -16,10 +17,18 @@ function Reels({ navigation }) {
         }, []))
 
     const usersView = []    
-    Object.values(users).forEach((user_, index) => {
-        if (user_.nick != env['profile'])
-            usersView.push({ id: index, user: user_.nick })
+
+    const getUsers = GetAllUsersInformation()
+
+    Object.values(getUsers).forEach((user_, index) => {
+        if (user_.id != env['profile'])
+            usersView.push({ id: index, user: user_.id })
     })
+
+    // Object.values(users).forEach((user_, index) => {
+    //     if (user_.nick != env['profile'])
+    //         usersView.push({ id: index, user: user_.nick })
+    // })
 
     const renderItem = ({ item }) => (
         <UserReel navigation={navigation} userKey={item.user} />
