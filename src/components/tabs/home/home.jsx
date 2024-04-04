@@ -1,5 +1,5 @@
 import React from "react";
-import { View, FlatList } from "react-native";
+import { View, FlatList, Text } from "react-native";
 import users from "../../../data/users";
 import UserFast from "../../user/userFast/userFast";
 import defaulStyles from "../../../styles";
@@ -7,12 +7,15 @@ import { useDispatch } from "react-redux";
 import { setScreen } from "../../../store/bottomBar/bottomBarSlice";
 import { useFocusEffect } from '@react-navigation/native';
 import env from "../../../environment/environment";
+import { GetAllUsersInformation } from "../../../api/information";
 
 function DefaulHome({ navigation }) {
     const usersView = []
-    Object.values(users).forEach((user_, index) => {
+    const getUsers = GetAllUsersInformation()
+
+    Object.values(getUsers).forEach((user_, index) => {
         if (user_.nick != env['profile'])
-            usersView.push({ id: index, user: user_.nick })
+            usersView.push({ id: index, user: user_.id })
     })
 
     const renderItem = ({ item }) => (
