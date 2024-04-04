@@ -1,6 +1,5 @@
 import React from "react";
 import { View, FlatList, Text } from "react-native";
-import users from "../../../data/users";
 import UserFast from "../../user/userFast/userFast";
 import defaulStyles from "../../../styles";
 import { useDispatch } from "react-redux";
@@ -14,7 +13,7 @@ function DefaulHome({ navigation }) {
     const getUsers = GetAllUsersInformation()
 
     Object.values(getUsers).forEach((user_, index) => {
-        if (user_.nick != env['profile'])
+        if (user_.id != env['profile'])
             usersView.push({ id: index, user: user_.id })
     })
 

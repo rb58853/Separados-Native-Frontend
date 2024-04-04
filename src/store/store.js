@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import userReducer from './user/userSlice'
+import profileReducer from './profile/profileSlice'
 import bottomBarReducer from './bottomBar/bottomBarSlice'
 
 export const store = configureStore({
   reducer: {
     bottomBar: bottomBarReducer,
-    user: userReducer,
+    profile: profileReducer,
   },
 });

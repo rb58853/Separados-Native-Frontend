@@ -1,28 +1,39 @@
 import { Text, View, Image, ScrollView, TouchableOpacity } from 'react-native';
 import users from "../../../../data/users"
 import env from "../../../../environment/environment"
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { setActive, setScreen } from '../../../../store/bottomBar/bottomBarSlice';
 import { styles } from './style';
 import { AgeCaculate } from '../../../user/utils/utils';
 import { LinearGradient } from 'expo-linear-gradient';
 import { appGradientColors } from '../../../../styles';
+import { GetUserInformationById } from '../../../../api/information';
+import { GetProfile, SetProfile } from '../../../../store/profile/functions';
 
-const profile = users[env['profile']]
+
 function Profile() {
     const dispatch = useDispatch()
+    let profile = users[env['profile']]
+    SetProfile(GetUserInformationById(env['profile']))
+
     useFocusEffect(
         React.useCallback(() => {
             dispatch(setScreen('profile'))
             dispatch(setActive(true))
         }, []))
 
-    const images = ShortImagesList()
+    let test = useSelector((state) => (state.profile))
+
+
+    const images = ShortImagesList(profile)
 
     return (
         <View style={styles.full}>
+            {/* <Text style={{ color: 'white' }}>
+                {test['images'][2]}
+            </Text> */}
             <ScrollView style={styles.profile}
                 showsVerticalScrollIndicator={false}
             >
@@ -36,23 +47,23 @@ function Profile() {
                             {`${profile.name} ${profile.last_name}, ${AgeCaculate(profile)}`}
                         </Text>
                         <Text style={{ color: 'white' }}>
-                            {`${profile.short_bibliografy}`}
+                            {`${profile.shortBibliografy}`}
                         </Text>
                     </View>
 
-                    <SeeButton />
+                    <SeeButton profile={profile} />
                 </View>
 
                 {/* <View style={styles.line} /> */}
 
-                <PersonalInfo />
+                <PersonalInfo profile={profile} />
 
                 <View style={styles.boxSpace}>
                     <View style={styles.headerRow}>
                         <Text style={styles.myHeader2}>Intereses</Text>
                         <IconButton image={require('./icons/edit.png')} />
                     </View>
-                    <Tags />
+                    <Tags profile={profile} />
                 </View>
 
                 <View style={styles.boxSpace}>
@@ -77,7 +88,7 @@ function Profile() {
     )
 }
 
-function ShortImagesList() {
+function ShortImagesList(profile) {
     const images = profile.images.map((path) => {
         // return <Text>{path}</Text>
         return <ShortImage path={path} />
@@ -105,11 +116,11 @@ function ShortImage({ path }) {
 
 }
 
-function Tags() {
-    return <NormalTags />
+function Tags({ profile }) {
+    return <NormalTags profile={profile} />
 }
 
-function NormalTags() {
+function NormalTags({ profile }) {
     const tags = profile.tags.map((tag) => {
         return <Text style={styles.tag}> {tag} </Text>
     })
@@ -117,7 +128,7 @@ function NormalTags() {
     return <View style={styles.tagsSpace}>{tags}</View>
 }
 
-function EditableTags() {
+function EditableTags({ profile }) {
     const tags = profile.tags.map((tag) => {
         return (
             <View style={styles.tag}>
@@ -145,7 +156,7 @@ function EditableTags() {
     return <View style={styles.tagsSpace}>{tags}</View>
 }
 
-function PersonalInfo() {
+function PersonalInfo({ profile }) {
     return (
         <View style={styles.boxSpace}>
             <View style={styles.headerRow}>
@@ -190,14 +201,14 @@ function DeleteTagButton() {
         </TouchableOpacity>
     )
 };
-function SeeButton() {
+function SeeButton({ profile }) {
     const navigation = useNavigation()
     return (
         <TouchableOpacity
             onPress={() => {
                 navigation.navigate('user',
                     {
-                        userKey: profile.nick,
+                        userKey: profile.id,
                         activeButtons: false,
                     }
                 );

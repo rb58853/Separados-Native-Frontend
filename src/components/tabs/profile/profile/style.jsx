@@ -25,7 +25,6 @@ export const styles = StyleSheet.create({
     text: {
         color: 'white',
     },
-
     myHeader1: {
         marginLeft: 5,
         marginBottom: 10,

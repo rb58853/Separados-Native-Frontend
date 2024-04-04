@@ -1,7 +1,7 @@
 const users =
 {
     "clara": {
-        nick: 'clara',
+        id: 'clara',
         name: "Clara",
         last_name: "Galle",
         email: "user@email.com",
@@ -35,7 +35,7 @@ const users =
         profession: 'modelo'
     },
     "anna": {
-        nick: 'anna',
+        id: 'anna',
         name: "Anna",
         last_name: "Johns",
         email: "user@email.com",
@@ -60,7 +60,7 @@ const users =
         profession: 'abogada'
     },
     "sofia": {
-        nick: 'sofia',
+        id: 'sofia',
         name: "Sofia",
         last_name: "Moreno",
         email: "user@email.com",
@@ -89,7 +89,7 @@ const users =
 
 
     "jashlem": {
-        nick: 'jashlem',
+        id: 'jashlem',
         name: "Jashlem",
         last_name: "Moreno",
         email: "user@email.com",
@@ -116,7 +116,7 @@ const users =
     },
 
     "mia": {
-        nick: 'mia',
+        id: 'mia',
         name: "Mia",
         last_name: "Wang",
         email: "user@email.com",
@@ -139,7 +139,7 @@ const users =
     },
 
     "raul": {
-        nick: 'raul',
+        id: 'raul',
         name: "Raul",
         last_name: "Beltran",
         email: "rb58853@gemail.com",
@@ -162,7 +162,7 @@ const users =
     },
 
     "olivia": {
-        nick: 'olivia',
+        id: 'olivia',
         name: "Olivia",
         last_name: "Perez",
         email: "user@email.com",
