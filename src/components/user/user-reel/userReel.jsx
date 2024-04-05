@@ -1,6 +1,6 @@
 import users from '../../../data/users.js';
 import { AgeCaculate } from '../utils/utils.jsx';
-import { Dimensions,View, ScrollView, Text, TouchableOpacity, Image } from 'react-native';
+import { Dimensions, View, ScrollView, Text, TouchableOpacity, Image } from 'react-native';
 import { styles } from './style.jsx';
 import Buttons from '../utils/buttons/buttons.jsx';
 import Images from '../utils/imagesComponent/images.jsx';

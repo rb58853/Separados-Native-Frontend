@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { AgeCaculate, CalculateDistance, SwitchImage } from '../utils.jsx';
 import { View, Image, FlatList, Text, TouchableOpacity } from 'react-native';
 import styles, { infoStyle } from './style.jsx';
-import { usersImagesRoot } from '../../../../environment/environment.js'
+import env, { usersImagesRoot } from '../../../../environment/environment.js'
 import FadePanel from '../../../utils/fadePanel.jsx'
 import { LinearGradient } from 'expo-linear-gradient';
 import Buttons from '../buttons/buttons.jsx';
@@ -52,6 +52,7 @@ function Info({ user, navigation }) {
         >
             <View style={{ height: 100 }} />
             <View style={infoStyle.infoSpace}>
+                
 
                 <View style={infoStyle.shortInfo}>
 
@@ -79,9 +80,7 @@ function Info({ user, navigation }) {
                     <View style={infoStyle.infoRow}>
                         {user.genre == 'male' && <Image style={infoStyle.infoRowImage} source={require('./icons/male.png')} />}
                         {user.genre == 'female' && <Image style={infoStyle.infoRowImage} source={require('./icons/female.png')} />}
-
-                        {/* <Image style={infoStyle.infoRowImage} source={require('./icons/orientation.png')} /> */}
-                        <Text style={styles().text}>{`${user.sexual_orientation}`}</Text>
+                        <Text style={styles().text}>{`${user.sexualOrientation}`}</Text>
                     </View>
 
                     {user.profession != 'none' &&

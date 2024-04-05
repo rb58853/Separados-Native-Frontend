@@ -9,6 +9,14 @@ export function GetProfile() {
 
 export function SetProfile( user) {
     const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(setProfile(user))
+    },[])
+    return user;
+}
+
+export function SetProfileOnFocus( user) {
+    const dispatch = useDispatch();
     useFocusEffect(() => {
         dispatch(setProfile(user))
     })

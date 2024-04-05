@@ -1,18 +1,20 @@
 import React from 'react';
-import users from '../../../data/users';
-import { AgeCaculate } from '../utils/utils';
+// import users from '../../../data/users.js';
+import { AgeCaculate } from '../utils/utils.jsx';
 import { View, ScrollView, Text, TouchableOpacity, Image } from 'react-native';
-import { styles } from './style';
+import { styles } from './style.jsx';
 import Buttons from '../utils/buttons/buttons.jsx';
 import Images from '../utils/imagesComponent/images.jsx';
 import defaulStyles from '../../../styles.jsx';
 import { appGradientColors } from '../../../styles.jsx'
 import { LinearGradient } from 'expo-linear-gradient';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useFocusEffect } from '@react-navigation/native';
 import { setActive } from '../../../store/bottomBar/bottomBarSlice.jsx';
 import env from '../../../environment/environment.js';
+import { LoadUsers } from '../../../api/loadUsers.js';
+import { SetUsers } from '../../../store/users/functions.jsx';
 
 function ExitButton({ navigation }) {
     return (
@@ -23,7 +25,7 @@ function ExitButton({ navigation }) {
             style={styles.exitButton}
         >
             <LinearGradient
-                style = {styles.exitButtonBackground}
+                style={styles.exitButtonBackground}
                 colors={appGradientColors.standart}
             >
                 <Image
@@ -37,8 +39,9 @@ function ExitButton({ navigation }) {
 
 function Tags({ user }) {
     const tags = []
-    user.tags.forEach((tag, index) => {
-        if (users[env['profile']].tags.includes(tag)) {
+    const users = useSelector((state) => (state.users))
+    user.interests.forEach((tag, index) => {
+        if (users[env['profile']].interests.includes(tag)) {
             tags.push(
                 <LinearGradient
                     colors={appGradientColors.standart}
@@ -51,8 +54,8 @@ function Tags({ user }) {
             )
         }
     })
-    user.tags.forEach((tag) => {
-        if (!users[env['profile']].tags.includes(tag)) {
+    user.interests.forEach((tag) => {
+        if (!users[env['profile']].interests.includes(tag)) {
             {
                 tags.push(
                     <Text style={styles.tag}>
@@ -74,10 +77,10 @@ function Info({ user }) {
     return (<View>
         <View style={styles.boxSpace}>
             <Text style={styles.myHeader2}>Informacion</Text>
-            <Text style={styles.text}>{`${user.genre == 'male' ? "♂️" : '♀️'} ${user.name} ${user.last_name}`}</Text>
+            <Text style={styles.text}>{`${user.genre == 'male' ? "♂️" : '♀️'} ${user.name} ${user.lastName}`}</Text>
             <Text style={styles.text}>{`📐${user.height} cm | ${user.weight} kg`}</Text>
             <Text style={styles.text}>{`🏠 ${user.city}, ${user.municipe}`}</Text>
-            <Text style={styles.text}>{`💜 ${user.sexual_orientation}`}</Text>
+            <Text style={styles.text}>{`💜 ${user.sexualOrientation}`}</Text>
             <Text style={styles.text}>{`🏢 Unversidad de la Habana`}</Text>
             <Text style={styles.text}>{`👨‍🎓 Ingeniera de sofware`}</Text>
         </View>
@@ -94,11 +97,11 @@ function Info({ user }) {
         </View >
     </View>
     )
-
 }
 
-function User({ route, navigation }) {
+function UserProfile({ route, navigation }) {
     const { userKey, activeButtons } = route.params
+    const users = useSelector((state) => (state.users))
     const user = users[userKey];
 
     const dispatch = useDispatch()
@@ -114,7 +117,6 @@ function User({ route, navigation }) {
     return (
         <View style={defaulStyles.container}>
             <View style={styles.user}>
-                {/* <Text style={{ color: 'black', fontSize: 25 }}> {userKey}</Text> */}
                 <View style={styles.line} />
                 <ExitButton navigation={navigation} />
                 <ScrollView style={styles.scrollView}
@@ -132,4 +134,4 @@ function User({ route, navigation }) {
         </View>
     )
 }
-export default User
+export default UserProfile

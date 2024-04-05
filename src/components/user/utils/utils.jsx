@@ -1,4 +1,5 @@
 import users from '../../../data/users.js';
+import dynamicUsers from '../../../data/usersRealTime.js';
 import env from '../../../environment/environment.js';
 
 export function SwitchImage(x, deltaX, setIndexImage, indexImage, imagesLenght) {
@@ -16,7 +17,7 @@ export function AgeCaculate(user) {
     const day = date.getDate();
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
-    const [bornDay, bornMonth, bornYear] = user.date_born.split('/')
+    const [bornDay, bornMonth, bornYear] = user.dateBorn.split('/')
 
     let age = parseInt(year, 10) - parseInt(bornYear, 10)
 
@@ -30,8 +31,8 @@ export function AgeCaculate(user) {
 }
 
 export function CalculateDistance(user) {
-    const userPos = user.position;
-    const mePos = users[env['profile']].position;
+    const userPos = dynamicUsers[user.id].position;
+    const mePos = dynamicUsers[env.profile].position;
     const x = userPos[0] - mePos[0]
     const y = userPos[1] - mePos[1]
     return (Math.sqrt(x * x + y * y) / 1000).toFixed(1)

@@ -10,13 +10,15 @@ import { AgeCaculate } from '../../../user/utils/utils';
 import { LinearGradient } from 'expo-linear-gradient';
 import { appGradientColors } from '../../../../styles';
 import { GetUserInformationById } from '../../../../api/information';
-import { GetProfile, SetProfile } from '../../../../store/profile/functions';
+import { GetProfile, SetProfile, SetProfileOnFocus } from '../../../../store/profile/functions';
+import { SetUsers } from '../../../../store/users/functions';
 
 
 function Profile() {
+    SetProfileOnFocus(GetUserInformationById(env.profile))
+
     const dispatch = useDispatch()
-    let profile = users[env['profile']]
-    SetProfile(GetUserInformationById(env['profile']))
+    let profile = useSelector((state) => (state.profile))
 
     useFocusEffect(
         React.useCallback(() => {
@@ -24,16 +26,13 @@ function Profile() {
             dispatch(setActive(true))
         }, []))
 
-    let test = useSelector((state) => (state.profile))
-
-
     const images = ShortImagesList(profile)
 
     return (
         <View style={styles.full}>
-            {/* <Text style={{ color: 'white' }}>
-                {test['images'][2]}
-            </Text> */}
+            <Text style={{ color: 'white' }}>
+                {profile['profilePhoto']}
+            </Text>
             <ScrollView style={styles.profile}
                 showsVerticalScrollIndicator={false}
             >
@@ -44,7 +43,7 @@ function Profile() {
                     />
                     <View style={styles.nameSpace}>
                         <Text style={styles.profileName}>
-                            {`${profile.name} ${profile.last_name}, ${AgeCaculate(profile)}`}
+                            {`${profile.name} ${profile.lastName}, ${AgeCaculate(profile)}`}
                         </Text>
                         <Text style={{ color: 'white' }}>
                             {`${profile.shortBibliografy}`}
@@ -56,7 +55,7 @@ function Profile() {
 
                 {/* <View style={styles.line} /> */}
 
-                <PersonalInfo profile={profile} />
+                <PersonalInfo user={profile} />
 
                 <View style={styles.boxSpace}>
                     <View style={styles.headerRow}>
@@ -156,7 +155,7 @@ function EditableTags({ profile }) {
     return <View style={styles.tagsSpace}>{tags}</View>
 }
 
-function PersonalInfo({ profile }) {
+function PersonalInfo({ user }) {
     return (
         <View style={styles.boxSpace}>
             <View style={styles.headerRow}>
@@ -164,15 +163,14 @@ function PersonalInfo({ profile }) {
                 <IconButton image={require('./icons/edit.png')} />
             </View>
 
-            <Text style={styles.text}>{`${profile.genre == 'male' ? "♂️" : '♀️'} ${profile.name} ${profile.last_name}`}</Text>
-            <Text style={styles.text}>{`📐${profile.height} cm | ${profile.weight} kg`}</Text>
-            <Text style={styles.text}>{`🏠 ${profile.city}, ${profile.municipe}`}</Text>
-            <Text style={styles.text}>{`💜 ${profile.sexual_orientation}`}</Text>
+            <Text style={styles.text}>{`${user.genre == 'male' ? "♂️" : '♀️'} ${user.name} ${user.last_name}`}</Text>
+            <Text style={styles.text}>{`📐${user.height} cm | ${user.weight} kg`}</Text>
+            <Text style={styles.text}>{`🏠 ${user.city}, ${user.municipe}`}</Text>
+            <Text style={styles.text}>{`💜 ${user.sexualOrientation}`}</Text>
             <Text style={styles.text}>{`🏢 Unversidad de la Habana`}</Text>
             <Text style={styles.text}>{`👨‍🎓 Ingeniera de sofware`}</Text>
         </View>
     )
-
 }
 
 function IconButton({ image }) {

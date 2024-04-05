@@ -19,7 +19,7 @@ function ReelsNew({ navigation }) {
         }, []))
 
     const usersView = []
-    const count = 1000    
+    const count = 1000
     const getUsers = GetAllUsersInformation()
 
     Object.values(getUsers).forEach((user, index) => {
@@ -48,6 +48,7 @@ function PrincipalUser({ usersView }) {
     const [indexView, setIndexView] = useState(usersView[indexUser])
     const [preIndexView, setPreIndexView] = useState(indexUser > 0 ? usersView[indexUser - 1] : null)
     const [postIndexView, setPostIndexView] = useState(indexUser < usersView.length ? usersView[indexUser + 1] : null)
+    const [render, setRender] = useState(true)
 
     const ref = useRef();
 
@@ -57,18 +58,19 @@ function PrincipalUser({ usersView }) {
 
     useLayoutEffect(() => {
         setOpacity(1)
-        ref.current.scrollTo({ y: heightSpace, animated: false })
+        ref.current.scrollTo({ y: heightSpace, animated: false }, indexUser)
+        setRender(true)
 
-    //     // setIndexView(usersView[indexUser])
-    //     // if (indexUser > 0)
-    //     //     setPreIndexView(usersView[indexUser - 1])
-    //     // else
-    //     //     setPreIndexView(null)
+        //     // setIndexView(usersView[indexUser])
+        //     // if (indexUser > 0)
+        //     //     setPreIndexView(usersView[indexUser - 1])
+        //     // else
+        //     //     setPreIndexView(null)
 
-    //     // if (indexUser < usersView.length)
-    //     //     setPostIndexView(usersView[indexUser + 1])
-    //     // else
-    //     //     setPostIndexView(null)
+        //     // if (indexUser < usersView.length)
+        //     //     setPostIndexView(usersView[indexUser + 1])
+        //     // else
+        //     //     setPostIndexView(null)
 
     }, [indexUser])
 
@@ -77,84 +79,85 @@ function PrincipalUser({ usersView }) {
         ref.current.scrollTo({ x: 0, y: heightSpace, animated: true })
     }, [wasScroll])
 
-    return (
-        <View>
-            <ScrollView
-                ref={ref}
-                style={{ backgroundColor: 'rgba(15,15,20,1)' }}
-                
-                showsVerticalScrollIndicator={false}
+    if (render)
+        return (
+            <View>
+                <ScrollView
+                    ref={ref}
+                    style={{ backgroundColor: 'rgba(15,15,20,1)' }}
 
-                onMomentumScrollEnd={(e) => {
-                    SwitchUser(e.nativeEvent.contentOffset.y, setIndexUser, indexUser, usersView.length)
-                    setWasScroll(!wasScroll)
-                }}
+                    showsVerticalScrollIndicator={false}
 
-                onScroll={(e) => {
-                    // DynamicSwitchUser(e.nativeEvent.contentOffset.y, setIndexUser, indexUser, usersView.length, ref)
-                    onScrollHandler(e.nativeEvent.contentOffset.y, setOpacity, heightSpace)
-                    setScrollPositionY(e.nativeEvent.contentOffset.y)
-                }}
-            >
+                    onMomentumScrollEnd={(e) => {
+                        SwitchUser(e.nativeEvent.contentOffset.y, setIndexUser, indexUser, usersView.length)
+                        setWasScroll(!wasScroll)
+                    }}
 
-                <View style={{ height: heightSpace }} />
-                <View style={{ height: reelHeight }} />
-
-
-                <View style={
-                    [
-                        {
-                            zIndex: 0,
-                            position: 'absolute',
-                            top: 0,
-                           opacity: 1 - opacity
-                        },
-
-                        scrollPositionY == heightSpace ? { top: heightSpace } :
-                            scrollPositionY > heightSpace ?
-                                { display: 'none' } :
-                                {}
-                    ]
-                }
-                >
-                    {indexUser > 0 && usersView[indexUser - 1]}
-                </View>
-
-
-                <View style={
-                    {
-                        zIndex: 1,
-                        position: 'absolute',
-                        top: heightSpace,
-                        opacity: opacity
+                    onScroll={(e) => {
+                        // DynamicSwitchUser(e.nativeEvent.contentOffset.y, setIndexUser, indexUser, usersView.length, ref)
+                        onScrollHandler(e.nativeEvent.contentOffset.y, setOpacity, heightSpace)
+                        setScrollPositionY(e.nativeEvent.contentOffset.y)
                     }}
                 >
-                    {usersView[indexUser]}
-                </View>
 
-                <View style={
-                    [
+                    <View style={{ height: heightSpace }} />
+                    <View style={{ height: reelHeight }} />
+
+
+                    <View style={
+                        [
+                            {
+                                zIndex: 0,
+                                position: 'absolute',
+                                top: 0,
+                                opacity: 1 - opacity
+                            },
+
+                            scrollPositionY == heightSpace ? { top: heightSpace } :
+                                scrollPositionY > heightSpace ?
+                                    { display: 'none' } :
+                                    {}
+                        ]
+                    }
+                    >
+                        {indexUser > 0 && usersView[indexUser - 1]}
+                    </View>
+
+
+                    <View style={
                         {
-                            zIndex: 0,
+                            zIndex: 1,
                             position: 'absolute',
-                            bottom: 0,
-                            opacity: 1 - opacity
-                        },
+                            top: heightSpace,
+                            opacity: opacity
+                        }}
+                    >
+                        {usersView[indexUser]}
+                    </View>
 
-                        scrollPositionY == heightSpace ? { bottom: heightSpace } :
-                            scrollPositionY < heightSpace ?
-                                { display: 'none' } :
-                                {}
-                    ]
-                }
-                >
-                    {indexUser < usersView.length && usersView[indexUser + 1]}
-                </View>
+                    <View style={
+                        [
+                            {
+                                zIndex: 0,
+                                position: 'absolute',
+                                bottom: 0,
+                                opacity: 1 - opacity
+                            },
 
-                <View style={{ height: heightSpace }} />
-            </ScrollView >
-        </View >
-    )
+                            scrollPositionY == heightSpace ? { bottom: heightSpace } :
+                                scrollPositionY < heightSpace ?
+                                    { display: 'none' } :
+                                    {}
+                        ]
+                    }
+                    >
+                        {indexUser < usersView.length && usersView[indexUser + 1]}
+                    </View>
+
+                    <View style={{ height: heightSpace }} />
+                </ScrollView >
+            </View >
+        )
 }
 
 function SwitchView(y, indexUser, usersLenght, ref) {

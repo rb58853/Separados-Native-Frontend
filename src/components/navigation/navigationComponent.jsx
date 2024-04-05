@@ -1,4 +1,4 @@
-import User from '../../components/user/user-perfil/user';
+import User from '../user/user-perfil/userProfile.jsx';
 import TopBar, { ProfileTopBar } from '../../components/bars/topBar/topBar.jsx';
 import DefaulHome from '../tabs/home/home.jsx';
 import BottomBar from '../../components/bars/bottomBar/bottomBar.jsx';
@@ -13,6 +13,8 @@ import Profile from '../tabs/profile/profile/profile.jsx';
 import ProfileStats from '../tabs/profile/profileStats/profileStats.jsx';
 import Favorites from '../tabs/profile/favorites/favorites.jsx';
 import ReelsNew from '../tabs/reels/reelsNew.jsx';
+import InitializeAppData from '../../environment/initialize.jsx';
+import UserProfile from '../user/user-perfil/userProfile.jsx';
 
 
 const Stack = createNativeStackNavigator();
@@ -26,6 +28,8 @@ function NavigationContent() {
 
     return (
         <NavigationContainer>
+            <InitializeAppData />
+
             <Stack.Navigator
                 initialRouteName="home"
             >
@@ -40,7 +44,7 @@ function NavigationContent() {
 
                 <Stack.Screen
                     name="user"
-                    component={User}
+                    component={UserProfile}
                     options={{ headerShown: false }}
                 />
 
